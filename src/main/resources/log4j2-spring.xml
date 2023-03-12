@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--日志级别以及优先级排序: OFF 0 > FATAL 100 > ERROR 200 > WARN 300 > INFO 400 > DEBUG 500 > TRACE 600 > ALL 700-->
+<!--Configuration后面的status,这个用于设置log4j2自身内部的信息输出,可以不设置,当设置成trace时,你会看到log4j2内部各种详细输出-->
+<!--monitorInterval：Log4j能够自动检测修改配置 文件和重新配置本身,设置间隔秒数-->
+<configuration status="WARN" monitorInterval="1800">
+
+	<Properties>
+	    <!-- ==============================================公共配置============================================== -->
+        <!-- 设置日志文件的目录名称 -->
+        <Property name="LOCAL_IP" value="${sys:LOCAL_IP}" />
+        <property name="SERVER_NAME">${sys:SERVER_NAME}</property>
+        <property name="BASE_PATH" value="/data/logs/${SERVER_NAME}/${LOCAL_IP}" />
+        <property name="BASE_PATH_ROLLOVER" value="/data/logs/${SERVER_NAME}/%d{yyyy-MM}/%d{yyyy-MM-dd}/${LOCAL_IP}" />
+        <property name="BASE_PATH_DELETE" value="/data/logs/${SERVER_NAME}" />
+        <property name="CHARSET" value="utf-8"/>
+        <property name="LOG_PATTERN">%style{[%d{yyyy-MM-d d HH:mm:ss.SSS}]}{bright,Blue} - %style{[%-4.22thread]}{bright,magenta} - %highlight{[%-4.5level]}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} - %style{[%-41.41logger{1.}]- [%-30F:%L]}{cyan}  : %msg%n</property>
+        <!-- <property name="LOG_PATTERN">[%d{yyyy-MM-d d HH:mm:ss.SSS}] - [%-4.22thread] - [%-4.5level] - [%logger] - [%-30F:%L] : %msg%n</property> -->
+        <!--日志级别以及优先级排序: OFF 0 > FATAL 100 > ERROR 200 > WARN 300 > INFO 400 > DEBUG 500 > TRACE 600 > ALL 700-->
+        <!-- 日志默认同类型日志,多久生成一个新的日志文件,这个配置需要和filePattern结合使用;
+                如果设置为1,filePattern是%d{yyyy-MM-dd}到天的格式,则间隔一天生成一个文件
+                如果设置为12,filePattern是%d{yyyy-MM-dd-HH}到小时的格式,则间隔12小时生成一个文件 -->
+        <!-- 日志默认同类型日志,是否对封存时间进行调制,若为true,则封存时间将以0点为边界进行调整,
+                如:现在是早上3am,interval是4,那么第一次滚动是在4am,接着是8am,12am...而不是7am -->
+        <!-- 日志默认同类型日志,同一文件夹下可以存放的数量,不设置此属性则默认为7个,filePattern最后要带%i才会生效 -->
+        <property name="ROLLING_TIME_INTERVAL" value="1" />
+        <property name="ROLLING_TIME_MODULATE" value="true" />
+        <property name="MAX_FILE_SIZE" value="50 MB"/>
+        <property name="MAX_HISTORY" value="60d"/>
+        <property name="MAX_STORAGE" value="5GB"/>
+        <property name="ROLLING_MAX" value="1200"/>
+        <!--自定义一些常量，之后使用${变量名}引用-->
+        <property name="CRON_POLICY" value="0 0 0 * * ?"/>
+       
+    </Properties>
+    
+    <!--定义appender -->
+    <appenders>
+            <!-- =======================================用来定义输出到控制台的配置======================================= -->
+        <Console name="CONSOLE" target="SYSTEM_OUT">
+            <!-- 设置控制台只输出level及以上级别的信息(onMatch),其他的直接拒绝(onMismatch)-->
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!-- 设置输出格式,不设置默认为:%m%n -->
+            <PatternLayout pattern="${LOG_PATTERN}" disableAnsi="false"/>
+        </Console>
+        
+        <!-- 自定义日志级别 -->
+        <!-- =======================================打印API_INFO级别的日志到文件======================================= -->
+        <RollingFile name="ALL_LOG" fileName="${BASE_PATH}/sys-all.log" filePattern="${BASE_PATH_ROLLOVER}/sys-all-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="${ROLLING_TIME_INTERVAL}" modulate="${ROLLING_TIME_MODULATE}"/>
+                <SizeBasedTriggeringPolicy size="${MAX_FILE_SIZE}"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+        		<Delete basePath="${BASE_PATH_DELETE}" maxDepth="4">
+          			<IfFileName glob="*/*/*/sys-all-*.log.gz" >
+          				<IfAny>
+          					<IfAccumulatedFileSize exceeds="${MAX_STORAGE}"/>
+          					<IfAccumulatedFileCount exceeds="${ROLLING_MAX}"/>
+          					<IfLastModified age="${MAX_HISTORY}" />
+          				</IfAny>
+          			</IfFileName>
+        		</Delete>
+      		</DefaultRolloverStrategy>
+        </RollingFile>
+        
+         <!-- 自定义日志级别 -->
+        <!-- =======================================打印API_INFO级别的日志到文件======================================= -->
+        <RollingFile name="DEBUG_ALL_LOG" fileName="${BASE_PATH}/sys-debug-all.log" filePattern="${BASE_PATH_ROLLOVER}/sys-debug-all-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="${ROLLING_TIME_INTERVAL}" modulate="${ROLLING_TIME_MODULATE}"/>
+                <SizeBasedTriggeringPolicy size="${MAX_FILE_SIZE}"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+        		<Delete basePath="${BASE_PATH_DELETE}" maxDepth="4">
+          			<IfFileName glob="*/*/*/sys-debug-all-*.log.gz" >
+          				<IfAny>
+          					<IfAccumulatedFileSize exceeds="${MAX_STORAGE}"/>
+          					<IfAccumulatedFileCount exceeds="${ROLLING_MAX}"/>
+          					<IfLastModified age="${MAX_HISTORY}" />
+          				</IfAny>
+          			</IfFileName>
+        		</Delete>
+      		</DefaultRolloverStrategy>
+        </RollingFile>
+        
+        <!-- 自定义日志级别 -->
+        <!-- =======================================打印API_INFO级别的日志到文件======================================= -->
+        <RollingFile name="INFO_LOG" fileName="${BASE_PATH}/sys-info.log" filePattern="${BASE_PATH_ROLLOVER}/sys-info-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="${ROLLING_TIME_INTERVAL}" modulate="${ROLLING_TIME_MODULATE}"/>
+                <SizeBasedTriggeringPolicy size="${MAX_FILE_SIZE}"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+        		<Delete basePath="${BASE_PATH_DELETE}" maxDepth="4">
+          			<IfFileName glob="*/*/*/sys-info-*.log.gz" >
+          				<IfAny>
+          					<IfAccumulatedFileSize exceeds="${MAX_STORAGE}"/>
+          					<IfAccumulatedFileCount exceeds="${ROLLING_MAX}"/>
+          					<IfLastModified age="${MAX_HISTORY}" />
+          				</IfAny>
+          			</IfFileName>
+        		</Delete>
+      		</DefaultRolloverStrategy>
+        </RollingFile>
+        
+        <!-- 自定义日志级别 -->
+        <!-- =======================================打印API_INFO级别的日志到文件======================================= -->
+        <RollingFile name="ERROR_LOG" fileName="${BASE_PATH}/sys-error.log" filePattern="${BASE_PATH_ROLLOVER}/sys-error-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Filters>
+                <ThresholdFilter level="FATAL" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="${ROLLING_TIME_INTERVAL}" modulate="${ROLLING_TIME_MODULATE}"/>
+                <SizeBasedTriggeringPolicy size="${MAX_FILE_SIZE}"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+        		<Delete basePath="${BASE_PATH_DELETE}" maxDepth="4">
+          			<IfFileName glob="*/*/*/sys-error-*.log.gz" >
+          				<IfAny>
+          					<IfAccumulatedFileSize exceeds="${MAX_STORAGE}"/>
+          					<IfAccumulatedFileCount exceeds="${ROLLING_MAX}"/>
+          					<IfLastModified age="${MAX_HISTORY}" />
+          				</IfAny>
+          			</IfFileName>
+        		</Delete>
+      		</DefaultRolloverStrategy>
+        </RollingFile>
+
+        <!-- 自定义日志级别 -->
+        <!-- =======================================打印API_INFO级别的日志到文件======================================= -->
+        <RollingFile name="FRAMEWORK" fileName="${BASE_PATH}/sys-framework.log" filePattern="${BASE_PATH_ROLLOVER}/sys-framework-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="${ROLLING_TIME_INTERVAL}" modulate="${ROLLING_TIME_MODULATE}"/>
+                <SizeBasedTriggeringPolicy size="${MAX_FILE_SIZE}"/>
+            </Policies>
+            <DefaultRolloverStrategy>
+        		<Delete basePath="${BASE_PATH_DELETE}" maxDepth="4">
+          			<IfFileName glob="*/*/*/sys-framework-*.log.gz" >
+          				<IfAny>
+          					<IfAccumulatedFileSize exceeds="${MAX_STORAGE}"/>
+          					<IfAccumulatedFileCount exceeds="${ROLLING_MAX}"/>
+          					<IfLastModified age="${MAX_HISTORY}" />
+          				</IfAny>
+          			</IfFileName>
+        		</Delete>
+      		</DefaultRolloverStrategy>
+        </RollingFile>
+
+    </appenders>
+    
+    <loggers>
+ 
+    	<logger name="_org" level="info" /> 
+    	
+    	<logger name="org" level="info" /> 
+    	
+    	<logger name="com.baomidou.mybatisplus" level="info" /> 
+    	
+    	<logger name="springfox" level="info" /> 
+    	
+    	<logger name="com.github.xiaoymin.knife4j" level="info" /> 
+    	
+    	<logger name="Validator" level="info" /> 
+    	
+    	<logger name="io" level="info" />
+    	
+    	<logger name="com.zaxxer" level="info" />
+    	
+    	<!--建立一个默认的root的logger-->
+        <AsyncRoot level="DEBUG" includeLocation="true">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ALL_LOG"/>
+        </AsyncRoot>
+        
+       <AsyncLogger name="cn.cnaworld" level="DEBUG" includeLocation="true">
+       		<appender-ref ref="DEBUG_ALL_LOG"/>
+            <appender-ref ref="INFO_LOG"/>
+            <appender-ref ref="ERROR_LOG"/>
+       </AsyncLogger>
+
+        <!--系统用户操作日志-->
+    	<AsyncLogger name="cn.cnaworld.framework" level="DEBUG" includeLocation="true">
+        	<appender-ref ref="FRAMEWORK"/>
+    	</AsyncLogger>
+
+    </loggers>
+
+</configuration>

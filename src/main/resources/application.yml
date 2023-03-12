@@ -1,0 +1,61 @@
+server:
+
+  port: 8081
+
+spring:
+  profiles:
+    active: @profileActive@
+  application:
+    name: cnaworld-base
+  main:
+    allow-circular-references: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+knife4j:
+  enable: true
+  openapi:
+    title: "cnaworld-base 接口文档"
+    description: "cnaworld-base 接口文档"
+    email: tntfyf@yeah.net
+    concat: tntfyf
+    url: https://github.com/tntfyf/cnaworld-base
+    version: v1.0.0
+    license: Apache 2.0
+    license-url: https://stackoverflow.com/
+    terms-of-service-url: https://stackoverflow.com/
+    group:
+      default:
+        group-name: cnaworld
+        api-rule: package
+        api-rule-resources:
+          - cn.cnaworld.base
+
+mybatis-plus:
+  global-config:
+   db-config:
+      logic-delete-field: deletedBD # 全局逻辑删除的实体字段名(since 3.3.0,配置后可以忽略不配置步骤2)
+      #对应数据库 0 未删除 1 已删除
+      logic-not-delete-value: 0  # 逻辑未删除值(对应数据库 ： 0)
+      logic-delete-value: 1  # 逻辑已删除值(对应数据库 ： 1)
+  mapper-locations: classpath*:cn/cnaworld/base/domain/**/*.xml
+  #实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: cn.cnaworld.base.domain.**.entity,cn.cnaworld.base.domain.**.model
+  configuration:
+   call-setters-on-nulls: true #查询语句中某些字段值为null时依旧返回
+
+cnaworld:
+  mybatis-plus:
+    auto-insert-fill: true #数据初始化时默认填充，insert时，自动获取fill-strategy-field 中的属性进行填充。
+    function-extension: true #扩展逻辑删除相关方法，提供逻辑恢复和直接删除扩展方法。默认true开启。
+    snow-flake: true #提供16位雪花ID实现。默认true开启。
+    optimistic-locker: true #提供乐观锁实现 OptimisticLockerInnerInterceptor。默认true开启。
+    update-optimistic-locker-field: true #数据更新时对乐观锁字段累增后填充。默认true开启。
+    fill-strategy-field: #数据初始化时默认填充属性集合
+      - field-name: "createTimeDb" #需填充的entity字段名称，需要注解 @TableField(value = "create_time_db",fill = FieldFill.INSERT) 中开启fill = FieldFill.INSERT
+        field-class: java.time.LocalDateTime #默认填充字段类型，Date 、Timestamp 、 LocalDateTime 默认取当前时间，Long 、Integer 默认取0。
+      - field-name: "updateTimeDb"
+        field-class: java.time.LocalDateTime #填充值处理器，实现FieldProcessor的getFieldValue方法，返回值作为属性填充值。
+      - field-name: "deletedDb"
+        field-value: false #填充值

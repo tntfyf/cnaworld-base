@@ -1,0 +1,41 @@
+spring:
+  # redis 配置
+  redis:
+    redisson:
+      file: classpath:redisson-site.yml
+  datasource:
+    hikari:
+      auto-commit: true #自动提交从池中返回的连接
+      connection-timeout: 30000 #等待连接池分配连接的最大时长（毫秒），默认30秒
+      idle-timeout: 600000 #连接允许在池中闲置的最长时间，默认10分钟
+      max-lifetime: 1800000 #池中连接最长生命周期，默认30分钟
+      connection-test-query: SELECT 1
+      maximum-pool-size: 50
+      minimum-idle: 10
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+
+cnaworld:
+  common-url: #通用地址
+    host-name: #地址名称集合
+      baidu: #自定义地址名称
+        host: "https://www.baidu.com" #自定义地址
+        path-name: #路径名称
+          query: "/s?wd=enum" #自定义路径query
+          view: "/v?wd=enum" #自定义路径view
+  system-config:
+    config-name:
+      sever-code: "test-core"  #自定义配置 #通用配置
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
+
+knife4j:
+  production: false
+  basic:
+    enable: false
+    username: cnaworld
+    password: cnaworld@123
