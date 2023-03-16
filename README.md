@@ -55,3 +55,18 @@
 5. 配置文件按照环境切换
 
    1. 提供基本的 spring 、 redis  、 knife4j 、mybatis-plus的上下文配置及site、dev、prod的环境切换功能。
+
+6. 单元测试问题
+   log4j2-spring.xml 中使用了系统变量
+   （1）${sys:LOCAL_IP}
+   （2）${sys:SERVER_NAME}
+   单元测试时由于无法找到这两个系统变量导致执行失败。
+   解决方法：
+   （1）将配置文件中的两个属性值写死
+   
+   ```xml
+   <Property name="LOCAL_IP" value="127.0.0.1" />
+   <property name="SERVER_NAME" value="base" />
+   ```
+   
+     (2)重命名配置文件为log4j2-spring.xml.bak使配置文件失效。

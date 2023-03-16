@@ -8,7 +8,7 @@
 	    <!-- ==============================================公共配置============================================== -->
         <!-- 设置日志文件的目录名称 -->
         <Property name="LOCAL_IP" value="${sys:LOCAL_IP}" />
-        <property name="SERVER_NAME">${sys:SERVER_NAME}</property>
+        <property name="SERVER_NAME" value="${sys:SERVER_NAME}" />
         <property name="BASE_PATH" value="/data/logs/${SERVER_NAME}/${LOCAL_IP}" />
         <property name="BASE_PATH_ROLLOVER" value="/data/logs/${SERVER_NAME}/%d{yyyy-MM}/%d{yyyy-MM-dd}/${LOCAL_IP}" />
         <property name="BASE_PATH_DELETE" value="/data/logs/${SERVER_NAME}" />
