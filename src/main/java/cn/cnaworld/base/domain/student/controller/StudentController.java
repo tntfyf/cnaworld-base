@@ -9,6 +9,7 @@ import cn.cnaworld.framework.infrastructure.annotation.CnaAopLog;
 import cn.cnaworld.framework.infrastructure.annotation.CnaRedisLock;
 import cn.cnaworld.framework.infrastructure.common.ExceptionCallBack;
 import cn.cnaworld.framework.infrastructure.statics.LockType;
+import cn.cnaworld.framework.infrastructure.utils.CnaLogUtil;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
@@ -48,8 +49,7 @@ public class StudentController {
         //定义查询结果list
         List<Student> list;
         try {
-            log.debug("开始查询学生列表,studentId：{},studentName：{}",studentId,studentName);
-
+            CnaLogUtil.debug(log,"开始查询学生列表,studentId：{},studentName：{}",studentId,studentName);
             QueryWrapper<Student> queryWrapper= new QueryWrapper<>();
             //组织判断条件，不为空则进行查询
             if(StringUtils.isNotBlank(studentId)) {
@@ -60,10 +60,10 @@ public class StudentController {
             }
             //调用数据库查询方法
             list = iStudentService.list(queryWrapper);
-            log.debug("查询学生列表成功,studentId：{},studentName：{}",studentId,studentName);
+            CnaLogUtil.debug(log,"查询学生列表成功,studentId：{},studentName：{}",studentId,studentName);
         } catch (Exception e) {
             //查询失败返回打印异常信息
-            log.error("查询学生列表失败,studentId：{},studentName：{}",studentId,studentName,e);
+            CnaLogUtil.error(log,"查询学生列表失败,studentId：{},studentName：{}",studentId,studentName,e);
             return ResponseResult.error("查询学生列表失败,请联系管理员确认问题！");
         }
         //查询成功返回结果
@@ -84,12 +84,12 @@ public class StudentController {
         //定义查询结果list
         List<StudentWithTeacherVo> studentWithTeacherVoList;
         try {
-            log.debug("开始查询学生列表包含老师数据,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId());
+            CnaLogUtil.debug(log,"开始查询学生列表包含老师数据,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId());
             studentWithTeacherVoList = iStudentService.findStudentWithTeacher(studentWithTeacherlistDto);
-            log.debug("开始查询学生列表包含老师数据成功,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId());
+            CnaLogUtil.debug(log,"开始查询学生列表包含老师数据成功,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId());
         } catch (Exception e) {
             //查询失败返回打印异常信息
-            log.error("开始查询学生列表包含老师数据失败,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId(),e);
+            CnaLogUtil.error(log,"开始查询学生列表包含老师数据失败,studentId：{},studentName：{},teacherId：{}",studentWithTeacherlistDto.getStudentId(),studentWithTeacherlistDto.getStudentName(),studentWithTeacherlistDto.getTeacherId(),e);
             return ResponseResult.error("开始查询学生列表包含老师数据失败,请联系管理员确认问题！");
         }
         //查询成功返回结果

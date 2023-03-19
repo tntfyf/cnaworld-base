@@ -2,6 +2,7 @@ package cn.cnaworld.base.infrastructure.component.exceptionhandler;
 
 import cn.cnaworld.framework.infrastructure.common.statics.constants.HttpCodeConstant;
 import cn.cnaworld.framework.infrastructure.exception.BusinessException;
+import cn.cnaworld.framework.infrastructure.utils.CnaLogUtil;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +32,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({ValidationException.class, BindException.class,MethodArgumentNotValidException.class})
     public ResponseResult<String> handleValidationException(Exception e) {
     	String errorMessage = extractedErrorMessage(e);
-		log.error(errorMessage,e);
+		CnaLogUtil.error(log,errorMessage,e);
     	return ResponseResult.error(HttpCodeConstant.PRECONDITION_REQUIRED,errorMessage);
     }
 
@@ -40,7 +41,7 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(BusinessException.class)
 	public ResponseResult<String> handleBusinessException(BusinessException e) {
-		log.error(e.getMessage(),e);
+		CnaLogUtil.error(log,e.getMessage(),e);
 		return ResponseResult.error(HttpCodeConstant.BUSINESS_ERROR,e.getMessage());
 	}
 
@@ -49,13 +50,13 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler({IllegalStateException.class,IllegalArgumentException.class})
 	public ResponseResult<String> handleSpringAssertException(Exception e) {
-		log.error(e.getMessage(),e);
+		CnaLogUtil.error(log,e.getMessage(),e);
 		return ResponseResult.error(HttpCodeConstant.ASSERT_ERROR,e.getMessage());
 	}
 
 	@ExceptionHandler({Exception.class,RuntimeException.class})
 	public ResponseResult<String> handleException(Exception e) {
-		log.error("系统异常请联系管理员,错误信息："+e.getMessage(),e);
+		CnaLogUtil.error(log,"系统异常请联系管理员,错误信息："+e.getMessage(),e);
 		return ResponseResult.error(HttpCodeConstant.ERROR,"系统异常请联系管理员,错误信息："+e.getMessage());
 	}
 	private static final Pattern DEFAULT_MESSAGE_PATTERN  = Pattern.compile("default message \\[(.*?)\\]");

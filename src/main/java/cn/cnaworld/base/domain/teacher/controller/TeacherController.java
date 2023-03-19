@@ -3,6 +3,7 @@ package cn.cnaworld.base.domain.teacher.controller;
 
 import cn.cnaworld.base.domain.teacher.model.vo.TeacherWithStudentListVo;
 import cn.cnaworld.base.domain.teacher.service.ITeacherService;
+import cn.cnaworld.framework.infrastructure.utils.CnaLogUtil;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,12 +42,12 @@ public class TeacherController {
         //定义查询结果list
         List<TeacherWithStudentListVo> teacherWithStudentList;
         try {
-            log.debug("开始查询学生列表包含老师数据,teacherId：{},studentName：{}",teacherId,teacherName);
+            CnaLogUtil.debug(log,"开始查询学生列表包含老师数据,teacherId：{},studentName：{}",teacherId,teacherName);
             teacherWithStudentList = iTeacherService.findTeacherWithStudentList(teacherId,teacherName);
-            log.debug("开始查询学生列表包含老师数据成功,teacherId：{},studentName：{}",teacherId,teacherName);
+            CnaLogUtil.debug(log,"开始查询学生列表包含老师数据成功,teacherId：{},studentName：{}",teacherId,teacherName);
         } catch (Exception e) {
             //查询失败返回打印异常信息
-            log.error("开始查询学生列表包含老师数据失败,teacherId：{},studentName：{}",teacherId,teacherName,e);
+            CnaLogUtil.error(log,"开始查询学生列表包含老师数据失败,teacherId：{},studentName：{}",teacherId,teacherName,e);
             return ResponseResult.error("开始查询学生列表包含老师数据失败,请联系管理员确认问题！");
         }
         //查询成功返回结果
