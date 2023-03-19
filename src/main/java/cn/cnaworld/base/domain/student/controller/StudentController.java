@@ -5,6 +5,10 @@ import cn.cnaworld.base.domain.student.entity.Student;
 import cn.cnaworld.base.domain.student.model.dto.StudentWithTeacherlistDto;
 import cn.cnaworld.base.domain.student.model.vo.StudentWithTeacherVo;
 import cn.cnaworld.base.domain.student.service.IStudentService;
+import cn.cnaworld.framework.infrastructure.annotation.CnaAopLog;
+import cn.cnaworld.framework.infrastructure.annotation.CnaRedisLock;
+import cn.cnaworld.framework.infrastructure.common.ExceptionCallBack;
+import cn.cnaworld.framework.infrastructure.statics.LockType;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import io.swagger.annotations.Api;
@@ -15,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 学生领域接口
@@ -38,6 +43,7 @@ public class StudentController {
      */
     @ApiOperation("查询学生列表")
     @GetMapping("/list")
+    @CnaRedisLock(key = "静态值",prefix = "前缀",lockType = LockType.Lock,paramsAsKey = {"studentId","studentName"},sync = true,waitTime = 10,timeUnit = TimeUnit.SECONDS,exceptionCallBack = ExceptionCallBack.class)
     public ResponseResult<List<Student>> list(@RequestParam(required = false) String studentId, @RequestParam(required = false) String studentName) {
         //定义查询结果list
         List<Student> list;
@@ -72,6 +78,8 @@ public class StudentController {
      */
     @ApiOperation("查询学生列表包含老师数据")
     @PostMapping("/StudentAndTeacherlist")
+    @CnaAopLog
+    @CnaRedisLock(paramsAsKey = "studentWithTeacherlistDto")
     public ResponseResult<List<StudentWithTeacherVo>> studentWithTeacherlist(@RequestBody StudentWithTeacherlistDto studentWithTeacherlistDto) {
         //定义查询结果list
         List<StudentWithTeacherVo> studentWithTeacherVoList;
@@ -87,6 +95,5 @@ public class StudentController {
         //查询成功返回结果
         return ResponseResult.success(studentWithTeacherVoList);
     }
-
 }
 
