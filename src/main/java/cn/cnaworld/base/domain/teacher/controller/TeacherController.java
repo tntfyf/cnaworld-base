@@ -3,8 +3,8 @@ package cn.cnaworld.base.domain.teacher.controller;
 
 import cn.cnaworld.base.domain.teacher.model.vo.TeacherWithStudentListVo;
 import cn.cnaworld.base.domain.teacher.service.ITeacherService;
-import cn.cnaworld.framework.infrastructure.utils.CnaLogUtil;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
+import cn.cnaworld.framework.infrastructure.utils.log.CnaLogUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

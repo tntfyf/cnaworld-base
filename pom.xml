@@ -18,7 +18,7 @@
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>1.8</java.version>
-		<cnaworld.core.version>1.0.8</cnaworld.core.version>
+		<cnaworld.starter.version>1.0.0</cnaworld.starter.version>
 	</properties>
 
 	<licenses>
@@ -103,8 +103,8 @@
 
         <dependency>
             <groupId>cn.cnaworld.framework</groupId>
-            <artifactId>core</artifactId>
-            <version>${cnaworld.core.version}</version>
+            <artifactId>cnaworld-spring-boot-starter</artifactId>
+            <version>${cnaworld.starter.version}</version>
         </dependency>
 
 		<dependency>
