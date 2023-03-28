@@ -2,7 +2,7 @@ spring:
   # redis 配置
   redis:
     redisson:
-      file: classpath:redisson-site.yml
+      file: classpath:/redisson/redisson-site.yml
   datasource:
     hikari:
       auto-commit: true #自动提交从池中返回的连接

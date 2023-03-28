@@ -18,7 +18,7 @@
 	<packaging>jar</packaging>
 	<properties>
 		<java.version>1.8</java.version>
-		<cnaworld.starter.version>1.0.1</cnaworld.starter.version>
+		<cnaworld.starter.version>1.0.2</cnaworld.starter.version>
 	</properties>
 
 	<licenses>
@@ -88,7 +88,7 @@
 					<artifactId>spring-boot-starter-logging</artifactId>
 				</exclusion>
 			</exclusions>
-            <scope>test</scope>
+			<scope>test</scope>
         </dependency>
 
         <dependency>
@@ -128,6 +128,23 @@
 			<groupId>com.github.xiaoymin</groupId>
 			<artifactId>knife4j-openapi2-spring-boot-starter</artifactId>
 			<version>4.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>enjoy</artifactId>
+			<version>5.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.18.2</version>
 		</dependency>
 
 	</dependencies>
@@ -237,7 +254,7 @@
 			<version>2.6.6</version>
 				<configuration>
 					<!--指定生成文档的使用的配置文件,配置文件放在自己的项目中-->
-					<configFile>./src/main/resources/smart-doc.json</configFile>
+					<configFile>./src/main/resources/smart-doc/smart-doc.json</configFile>
 					<!--指定项目名称-->
 					<projectName>${name}</projectName>
 				</configuration>

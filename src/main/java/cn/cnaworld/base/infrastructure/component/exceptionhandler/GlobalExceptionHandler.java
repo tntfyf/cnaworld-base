@@ -6,11 +6,13 @@ import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import cn.cnaworld.framework.infrastructure.utils.log.CnaLogUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.ValidationException;
 import java.util.HashMap;
 import java.util.Map;
@@ -30,9 +32,10 @@ public class GlobalExceptionHandler {
      * ValidationException
      */
     @ExceptionHandler({ValidationException.class, BindException.class,MethodArgumentNotValidException.class})
-    public ResponseResult<String> handleValidationException(Exception e) {
+    public ResponseResult<String> handleValidationException(Exception e , HttpServletResponse response) {
     	String errorMessage = extractedErrorMessage(e);
 		CnaLogUtil.error(log,errorMessage,e);
+		response.setStatus(HttpStatus.PRECONDITION_REQUIRED.value());
     	return ResponseResult.error(HttpCodeConstant.PRECONDITION_REQUIRED,errorMessage);
     }
 
@@ -40,8 +43,9 @@ public class GlobalExceptionHandler {
 	 * 业务异常
 	 */
 	@ExceptionHandler(BusinessException.class)
-	public ResponseResult<String> handleBusinessException(BusinessException e) {
+	public ResponseResult<String> handleBusinessException(BusinessException e , HttpServletResponse response) {
 		CnaLogUtil.error(log,e.getMessage(),e);
+		response.setStatus(HttpCodeConstant.BUSINESS_ERROR);
 		return ResponseResult.error(HttpCodeConstant.BUSINESS_ERROR,e.getMessage());
 	}
 
@@ -49,14 +53,16 @@ public class GlobalExceptionHandler {
 	 * 断言校验异常
 	 */
 	@ExceptionHandler({IllegalStateException.class,IllegalArgumentException.class})
-	public ResponseResult<String> handleSpringAssertException(Exception e) {
+	public ResponseResult<String> handleSpringAssertException(Exception e, HttpServletResponse response) {
 		CnaLogUtil.error(log,e.getMessage(),e);
+		response.setStatus(HttpCodeConstant.ASSERT_ERROR);
 		return ResponseResult.error(HttpCodeConstant.ASSERT_ERROR,e.getMessage());
 	}
 
 	@ExceptionHandler({Exception.class,RuntimeException.class})
-	public ResponseResult<String> handleException(Exception e) {
+	public ResponseResult<String> handleException(Exception e, HttpServletResponse response) {
 		CnaLogUtil.error(log,"系统异常请联系管理员,错误信息："+e.getMessage(),e);
+		response.setStatus(HttpCodeConstant.ERROR);
 		return ResponseResult.error(HttpCodeConstant.ERROR,"系统异常请联系管理员,错误信息："+e.getMessage());
 	}
 	private static final Pattern DEFAULT_MESSAGE_PATTERN  = Pattern.compile("default message \\[(.*?)\\]");
