@@ -35,7 +35,7 @@ public class CnaworldBaseCodeGenerator {
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
 				.parent("cn.cnaworld.base.domain") //父包名 默认值:com.baomidou
-				.moduleName("student") //父包模块名 默认值:无
+				.moduleName("user") //父包模块名 默认值:无
 				.entity("entity") //Entity包名 默认值:entity
 				.service("service") //Service包名 默认值:service
 				.serviceImpl("service.impl") //Service Impl包名 默认值:service.impl
@@ -52,7 +52,7 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("student")//增加表匹配(内存过滤)
+				.addInclude("sys_user")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
 				//.addTablePrefix("")//增加表前缀
