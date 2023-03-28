@@ -130,23 +130,6 @@
 			<version>4.0.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.jfinal</groupId>
-			<artifactId>enjoy</artifactId>
-			<version>5.0.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.18.2</version>
-		</dependency>
-
 	</dependencies>
 
 	<!--定义打包命令指定的环境对应的profileActive变量值-->
