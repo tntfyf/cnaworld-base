@@ -1,0 +1,648 @@
+{
+  "components": {
+    "schemas": {
+      "Student_TeacherWithStudentListVo_response": {
+        "properties": {
+          "deletedDb": {
+            "format": "boolean",
+            "description": "逻辑删除",
+            "type": "boolean",
+            "example": "true"
+          },
+          "createByDb": {
+            "format": "string",
+            "description": "创建者",
+            "type": "string",
+            "example": "uys98l"
+          },
+          "updateByDb": {
+            "format": "string",
+            "description": "更新者",
+            "type": "string",
+            "example": "bojn6w"
+          },
+          "createTimeDb": {
+            "format": "string",
+            "description": "创建日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "updateTimeDb": {
+            "format": "string",
+            "description": "更新日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "studentId": {
+            "format": "int64",
+            "description": "学生ID",
+            "type": "number",
+            "example": "992"
+          },
+          "studentName": {
+            "format": "string",
+            "description": "学生姓名",
+            "type": "string",
+            "example": "jason.ratke"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "老师ID",
+            "type": "number",
+            "example": "405"
+          }
+        }
+      },
+      "ResponseResultListStudentWithTeacherVo_response": {
+        "properties": {
+          "code": {
+            "format": "int32",
+            "description": "No comments found.",
+            "type": "integer",
+            "example": "62"
+          },
+          "message": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "description": "No comments found.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudentWithTeacherVo_response"
+            }
+          }
+        }
+      },
+      "string": {
+        "format": "string",
+        "type": "string"
+      },
+      "Student_response": {
+        "properties": {
+          "deletedDb": {
+            "format": "boolean",
+            "description": "逻辑删除",
+            "type": "boolean",
+            "example": "true"
+          },
+          "createByDb": {
+            "format": "string",
+            "description": "创建者",
+            "type": "string",
+            "example": "cn0a40"
+          },
+          "updateByDb": {
+            "format": "string",
+            "description": "更新者",
+            "type": "string",
+            "example": "44muol"
+          },
+          "createTimeDb": {
+            "format": "string",
+            "description": "创建日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "updateTimeDb": {
+            "format": "string",
+            "description": "更新日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "studentId": {
+            "format": "int64",
+            "description": "学生ID",
+            "type": "number",
+            "example": "721"
+          },
+          "studentName": {
+            "format": "string",
+            "description": "学生姓名",
+            "type": "string",
+            "example": "jason.ratke"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "老师ID",
+            "type": "number",
+            "example": "842"
+          }
+        }
+      },
+      "StudentWithTeacherVo_response": {
+        "properties": {
+          "deletedDb": {
+            "format": "boolean",
+            "description": "逻辑删除",
+            "type": "boolean",
+            "example": "true"
+          },
+          "createByDb": {
+            "format": "string",
+            "description": "创建者",
+            "type": "string",
+            "example": "61ple2"
+          },
+          "updateByDb": {
+            "format": "string",
+            "description": "更新者",
+            "type": "string",
+            "example": "rezezk"
+          },
+          "createTimeDb": {
+            "format": "string",
+            "description": "创建日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "updateTimeDb": {
+            "format": "string",
+            "description": "更新日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "studentId": {
+            "format": "int64",
+            "description": "学生ID",
+            "type": "number",
+            "example": "956"
+          },
+          "studentName": {
+            "format": "string",
+            "description": "学生姓名",
+            "type": "string",
+            "example": "jason.ratke"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "老师ID",
+            "type": "number",
+            "example": "90"
+          },
+          "teacherVo": {
+            "description": "No comments found.(object)",
+            "type": "object",
+            "$ref": "#/components/schemas/Teacher_StudentWithTeacherVo_response"
+          }
+        }
+      },
+      "ResponseResultListStudent_response": {
+        "properties": {
+          "code": {
+            "format": "int32",
+            "description": "No comments found.",
+            "type": "integer",
+            "example": "915"
+          },
+          "message": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "description": "No comments found.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Student_response"
+            }
+          }
+        }
+      },
+      "ResponseResultString_response": {
+        "properties": {
+          "code": {
+            "format": "int32",
+            "description": "No comments found.",
+            "type": "integer",
+            "example": "999"
+          },
+          "message": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string"
+          }
+        }
+      },
+      "TeacherWithStudentListVo_response": {
+        "properties": {
+          "deletedDb": {
+            "format": "boolean",
+            "description": "逻辑删除",
+            "type": "boolean",
+            "example": "true"
+          },
+          "createByDb": {
+            "format": "string",
+            "description": "创建者",
+            "type": "string",
+            "example": "8qzb2e"
+          },
+          "updateByDb": {
+            "format": "string",
+            "description": "更新者",
+            "type": "string",
+            "example": "4xo0n8"
+          },
+          "createTimeDb": {
+            "format": "string",
+            "description": "创建日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "updateTimeDb": {
+            "format": "string",
+            "description": "更新日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "553"
+          },
+          "teacherName": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "jason.ratke"
+          },
+          "studentList": {
+            "description": "No comments found.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Student_TeacherWithStudentListVo_response"
+            }
+          }
+        }
+      },
+      "ResponseResultListTeacherWithStudentListVo_response": {
+        "properties": {
+          "code": {
+            "format": "int32",
+            "description": "No comments found.",
+            "type": "integer",
+            "example": "914"
+          },
+          "message": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "success"
+          },
+          "data": {
+            "description": "No comments found.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TeacherWithStudentListVo_response"
+            }
+          }
+        }
+      },
+      "StudentWithTeacherlistDto_request": {
+        "properties": {
+          "studentId": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "107"
+          },
+          "studentName": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "jason.ratke"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "583"
+          }
+        }
+      },
+      "Teacher_StudentWithTeacherVo_response": {
+        "properties": {
+          "deletedDb": {
+            "format": "boolean",
+            "description": "逻辑删除",
+            "type": "boolean",
+            "example": "true"
+          },
+          "createByDb": {
+            "format": "string",
+            "description": "创建者",
+            "type": "string",
+            "example": "1agebg"
+          },
+          "updateByDb": {
+            "format": "string",
+            "description": "更新者",
+            "type": "string",
+            "example": "gl67s1"
+          },
+          "createTimeDb": {
+            "format": "string",
+            "description": "创建日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "updateTimeDb": {
+            "format": "string",
+            "description": "更新日期",
+            "type": "string",
+            "example": "2023-05-01 11:10:10"
+          },
+          "teacherId": {
+            "format": "int64",
+            "description": "No comments found.",
+            "type": "number",
+            "example": "929"
+          },
+          "teacherName": {
+            "format": "string",
+            "description": "No comments found.",
+            "type": "string",
+            "example": "jason.ratke"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": ""
+    }
+  ],
+  "openapi": "3.0.3",
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "index",
+        "deprecated": false,
+        "description": "index",
+        "tags": [
+          "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "",
+        "parameters": []
+      }
+    },
+    "/teacher/StudentAndTeacherlist": {
+      "get": {
+        "summary": "查询学生列表包含老师数据",
+        "deprecated": false,
+        "description": "查询学生列表包含老师数据",
+        "tags": [
+          "老师接口"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseResultListTeacherWithStudentListVo_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 706,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"deletedDb\": true,\n      \"createByDb\": \"ebexen\",\n      \"updateByDb\": \"ltvoj1\",\n      \"createTimeDb\": \"2023-05-01 11:10:10\",\n      \"updateTimeDb\": \"2023-05-01 11:10:10\",\n      \"teacherId\": 61,\n      \"teacherName\": \"jason.ratke\",\n      \"studentList\": [\n        {\n          \"deletedDb\": true,\n          \"createByDb\": \"fhvp72\",\n          \"updateByDb\": \"onvbfw\",\n          \"createTimeDb\": \"2023-05-01 11:10:10\",\n          \"updateTimeDb\": \"2023-05-01 11:10:10\",\n          \"studentId\": 21,\n          \"studentName\": \"jason.ratke\",\n          \"teacherId\": 715\n        }\n      ]\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "teacherStudentAndTeacherlist",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "String",
+            "required": false,
+            "name": "teacherId"
+          },
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "String",
+            "required": false,
+            "name": "teacherName"
+          }
+        ]
+      }
+    },
+    "/login": {
+      "get": {
+        "summary": "index",
+        "deprecated": false,
+        "description": "index",
+        "tags": [
+          "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseResultString_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 768,\n  \"message\": \"success\",\n  \"data\": \"hrl9up\"\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "login",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "No comments found.",
+            "required": false,
+            "name": "username"
+          },
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "No comments found.",
+            "required": false,
+            "name": "password"
+          }
+        ]
+      }
+    },
+    "/student/StudentAndTeacherlist": {
+      "post": {
+        "summary": "查询学生列表包含老师数据",
+        "deprecated": false,
+        "description": "查询学生列表包含老师数据",
+        "tags": [
+          "学生领域接口"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StudentWithTeacherlistDto_request"
+              },
+              "examples": {
+                "json": {
+                  "summary": "test data",
+                  "value": "{\n  \"studentId\": 228,\n  \"studentName\": \"jason.ratke\",\n  \"teacherId\": 399\n}"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseResultListStudentWithTeacherVo_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 10,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"deletedDb\": true,\n      \"createByDb\": \"s0nu12\",\n      \"updateByDb\": \"74k39t\",\n      \"createTimeDb\": \"2023-05-01 11:10:10\",\n      \"updateTimeDb\": \"2023-05-01 11:10:10\",\n      \"studentId\": 326,\n      \"studentName\": \"jason.ratke\",\n      \"teacherId\": 708,\n      \"teacherVo\": {\n        \"deletedDb\": true,\n        \"createByDb\": \"ddymko\",\n        \"updateByDb\": \"ro2nob\",\n        \"createTimeDb\": \"2023-05-01 11:10:10\",\n        \"updateTimeDb\": \"2023-05-01 11:10:10\",\n        \"teacherId\": 772,\n        \"teacherName\": \"jason.ratke\"\n      }\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "studentStudentAndTeacherlist",
+        "parameters": []
+      }
+    },
+    "/student/list": {
+      "get": {
+        "summary": "查询学生列表",
+        "deprecated": false,
+        "description": "查询学生列表",
+        "tags": [
+          "学生领域接口"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseResultListStudent_response"
+                },
+                "examples": {
+                  "json": {
+                    "summary": "test data",
+                    "value": "{\n  \"code\": 290,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"deletedDb\": true,\n      \"createByDb\": \"a72tuu\",\n      \"updateByDb\": \"a9ki8c\",\n      \"createTimeDb\": \"2023-05-01 11:10:10\",\n      \"updateTimeDb\": \"2023-05-01 11:10:10\",\n      \"studentId\": 15,\n      \"studentName\": \"jason.ratke\",\n      \"teacherId\": 472\n    }\n  ]\n}"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "studentlist",
+        "parameters": [
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "String",
+            "required": false,
+            "name": "studentId"
+          },
+          {
+            "schema": {
+              "format": "integer",
+              "type": "string"
+            },
+            "in": "query",
+            "description": "String",
+            "required": false,
+            "name": "studentName"
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "cnaworld-base",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "学生领域接口",
+      "description": "学生领域接口"
+    },
+    {
+      "name": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。",
+      "description": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。"
+    },
+    {
+      "name": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。",
+      "description": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。"
+    },
+    {
+      "name": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。",
+      "description": "接入层，负责domain领域间协调 ，只有Controller 和 service。不与实体直接交互。"
+    },
+    {
+      "name": "老师接口",
+      "description": "老师接口"
+    },
+    {
+      "name": "&lt;p&gt;\r\n 前端控制器\r\n&lt;/p&gt;",
+      "description": "&lt;p&gt;\r\n 前端控制器\r\n&lt;/p&gt;"
+    }
+  ]
+}
