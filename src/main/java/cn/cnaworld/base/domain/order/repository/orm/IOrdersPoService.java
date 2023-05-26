@@ -1,6 +1,6 @@
 package cn.cnaworld.base.domain.order.repository.orm;
 
-import cn.cnaworld.base.domain.order.repository.orm.po.OrderPo;
+import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.CnaWorldBaseService;
 
 /**
@@ -9,8 +9,8 @@ import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.serv
  * </p>
  *
  * @author Lucifer
- * @since 2023-05-25
+ * @since 2023-05-26
  */
-public interface IOrderPoService extends CnaWorldBaseService<OrderPo> {
+public interface IOrdersPoService extends CnaWorldBaseService<OrdersPo> {
 
 }

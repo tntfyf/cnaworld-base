@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cnaworld.base.domain.product.repository.orm.mapper.ProductPoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.cnaworld.base.domain.product.repository.orm.po.ProductPo">
+        <id column="product_id" property="productId" />
+        <result column="product_title" property="productTitle" />
+        <result column="product_skuid" property="productSkuid" />
+        <result column="product_num" property="productNum" />
+        <result column="product_last_num" property="productLastNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        product_id, product_title, product_skuid, product_num, product_last_num
+    </sql>
+
+</mapper>

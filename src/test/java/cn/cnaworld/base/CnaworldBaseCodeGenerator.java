@@ -34,7 +34,7 @@ public class CnaworldBaseCodeGenerator {
 				.commentDate("yyyy-MM-dd")//注释日期 默认值: yyyy-MM-dd
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
-				.parent("cn.cnaworld.base.domain.aggregate") //父包名 默认值:com.baomidou
+				.parent("cn.cnaworld.base.domain") //父包名 默认值:com.baomidou
 				.moduleName("order") //父包模块名 默认值:无
 				.entity("repository.orm.po") //Entity包名 默认值:entity
 				.service("repository.orm") //Service包名 默认值:service
@@ -52,8 +52,8 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("order")//增加表匹配(内存过滤)
-				.addInclude("goods")//增加表匹配(内存过滤)
+				.addInclude("orders")//增加表匹配(内存过滤)
+				//.addInclude("goods")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
 				//.addTablePrefix("")//增加表前缀

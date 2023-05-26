@@ -4,9 +4,9 @@ import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.repository.orm.IGoodsPoService;
-import cn.cnaworld.base.domain.order.repository.orm.IOrderPoService;
+import cn.cnaworld.base.domain.order.repository.orm.IOrdersPoService;
 import cn.cnaworld.base.domain.order.repository.orm.po.GoodsPo;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrderPo;
+import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     private IGoodsPoService iGoodsPoService;
 
     @Autowired
-    private IOrderPoService iOrderPoService;
+    private IOrdersPoService iOrdersPoService;
 
     /**
      * 保存聚合根
@@ -34,7 +34,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public void saveOrder(Order order) {
 
         if(order!=null){
-            iOrderPoService.save(order);
+            iOrdersPoService.save(order);
             if(order.getGoods()!=null){
                 iGoodsPoService.save(order.getGoods());
             }
@@ -50,8 +50,8 @@ public class OrderRepositoryImpl implements OrderRepository {
      */
     @Override
     public Order queryOrderById(Long orderId) {
-        OrderPo orderPo = iOrderPoService.getById(orderId);
-        Order order = (Order) orderPo;
+        OrdersPo ordersPo = iOrdersPoService.getById(orderId);
+        Order order = (Order) ordersPo;
         QueryWrapper<GoodsPo> queryWrapper = new QueryWrapper<GoodsPo>();
         queryWrapper.eq("goods_order_id",order.getOrderId());
         GoodsPo goodsPo = iGoodsPoService.getOne(queryWrapper);

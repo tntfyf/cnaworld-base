@@ -16,13 +16,13 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author Lucifer
- * @since 2023-05-25
+ * @since 2023-05-26
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@TableName("order")
-@ApiModel(value = "OrderPo对象", description = "")
-public class OrderPo extends CnaWorldBaseEntity {
+@TableName("orders")
+@ApiModel(value = "OrdersPo对象", description = "")
+public class OrdersPo extends CnaWorldBaseEntity {
 
 
     @ApiModelProperty(value = "订单ID")

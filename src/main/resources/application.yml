@@ -42,9 +42,9 @@ mybatis-plus:
       #对应数据库 0 未删除 1 已删除
       logic-not-delete-value: 0  # 逻辑未删除值(对应数据库 ： 0)
       logic-delete-value: 1  # 逻辑已删除值(对应数据库 ： 1)
-  mapper-locations: classpath*:cn/cnaworld/base/domain/aggregate/**/*.xml
+  mapper-locations: classpath*:cn/cnaworld/base/domain/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.cnaworld.base.domain.aggregate.**.po,cn.cnaworld.base.domain.aggregate.**.model
+  typeAliasesPackage: cn.cnaworld.base.domain.**.po,cn.cnaworld.base.domain.**.model
   configuration:
    call-setters-on-nulls: true #查询语句中某些字段值为null时依旧返回
 

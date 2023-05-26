@@ -1,13 +1,11 @@
 package cn.cnaworld.base.domain.order.model.root;
 
 import cn.cnaworld.base.domain.order.model.entity.Goods;
+import cn.cnaworld.base.domain.order.model.vo.OrderType;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrderPo;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
+import lombok.*;
 
 /**
  * 订单聚合根
@@ -18,18 +16,18 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @ToString
-@Component
-public class Order extends OrderPo {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Order extends OrdersPo {
 
-    @Autowired
-    private OrderRepository orderRepository;
+    private OrderRepository orderRepository = SpringBeanUtil.getBean(OrderRepository.class);
 
     private Goods goods;
 
-    public Order getOrderInfo(Long id){
-        return orderRepository.queryOrderById(id);
+    private OrderType orderType;
+
+    public Order getOrderInfo(){
+        return orderRepository.queryOrderById(this.getOrderId());
     }
-
-
 
 }
