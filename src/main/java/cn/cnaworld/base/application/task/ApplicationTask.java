@@ -6,4 +6,7 @@ package cn.cnaworld.base.application.task;
  * @since
  */
 public class ApplicationTask {
+
+    //领域定时任务或者其他任务
+
 }

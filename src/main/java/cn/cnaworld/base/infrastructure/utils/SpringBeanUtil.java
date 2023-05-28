@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 /**
  * @author Lucifer
  */
-@Component
 public class SpringBeanUtil {
 
     private static ApplicationContext context;

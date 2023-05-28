@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  * @date 2023/5/26
  * @since
  */
-@Component
 public class Assembler {
 
     public static OrderAndProductInfoDto assembleOrderAndProduct(Order order, Product product) {
@@ -25,7 +24,6 @@ public class Assembler {
         orderAndProductInfoDto.setProductNum(product.getProductNum());
         orderAndProductInfoDto.setProductLastNum(product.getProductLastNum());
         return orderAndProductInfoDto;
-
     }
 
 

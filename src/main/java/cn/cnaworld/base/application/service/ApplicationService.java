@@ -16,14 +16,21 @@ import org.springframework.stereotype.Service;
 public class ApplicationService {
 
     public OrderAndProductInfoDto getOrderAndProductInfo(long orderId){
+        //使用订单领域工厂实例化订单领域聚合根对象
         Order order = new OrderFactory()
                 .orderId(orderId)
                 .orderBuyerPhone("1")
                 .build();
+        //调用领域服务方法
         Order orderInfo = order.getOrderInfo();
+        //----------------------------------------------------------
+        //实例化商品领域聚合根
         Product product = new Product();
         product.setProductId(orderInfo.getGoods().getGoodsProductId());
+        //调用领域方法
         Product productInfo = product.getProductInfo();
+
+        //将两个领域的返回信息进行适配转换成接入层DTO模型返回
         return Assembler.assembleOrderAndProduct(orderInfo,productInfo);
     }
 

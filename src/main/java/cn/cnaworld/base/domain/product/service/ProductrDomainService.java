@@ -1,6 +1,4 @@
-package cn.cnaworld.base.domain.order.service;
-
-import org.springframework.stereotype.Service;
+package cn.cnaworld.base.domain.product.service;
 
 /**
  * 订单领域服务
@@ -8,7 +6,7 @@ import org.springframework.stereotype.Service;
  * @date 2023/5/25
  * @since 1.0.1.1
  */
-public interface OrderDomainService {
+public interface ProductrDomainService {
 
     void domainLogicalProcessing();
 

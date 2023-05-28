@@ -7,8 +7,10 @@ import cn.cnaworld.base.domain.order.repository.orm.IGoodsPoService;
 import cn.cnaworld.base.domain.order.repository.orm.IOrdersPoService;
 import cn.cnaworld.base.domain.order.repository.orm.po.GoodsPo;
 import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 
 /**
@@ -42,7 +44,6 @@ public class OrderRepositoryImpl implements OrderRepository {
 
     }
 
-
     /**
      * 查询订单
      *
@@ -50,12 +51,17 @@ public class OrderRepositoryImpl implements OrderRepository {
      */
     @Override
     public Order queryOrderById(Long orderId) {
+        //仓储实际调用ORM框架进行查询
         OrdersPo ordersPo = iOrdersPoService.getById(orderId);
-        Order order = (Order) ordersPo;
+        //PO到DO转换
+        Order order = BeanCopierUtil.copy(ordersPo, Order.class);
+        //未来考虑实体懒加载查询设计
         QueryWrapper<GoodsPo> queryWrapper = new QueryWrapper<GoodsPo>();
         queryWrapper.eq("goods_order_id",order.getOrderId());
         GoodsPo goodsPo = iGoodsPoService.getOne(queryWrapper);
-        order.setGoods((Goods) goodsPo);
+        //PO到DO转换
+        Goods goods = BeanCopierUtil.copy(goodsPo, Goods.class);
+        order.setGoods(goods);
         return order;
     }
 }
