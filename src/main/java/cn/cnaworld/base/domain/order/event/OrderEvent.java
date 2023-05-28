@@ -1,7 +1,7 @@
 package cn.cnaworld.base.domain.order.event;
 
 import cn.cnaworld.base.domain.order.model.root.Order;
-import cn.cnaworld.base.infrastructure.bus.DomainEvent;
+import cn.cnaworld.base.infrastructure.component.bus.DomainEvent;
 
 /**
  * @author Administrator

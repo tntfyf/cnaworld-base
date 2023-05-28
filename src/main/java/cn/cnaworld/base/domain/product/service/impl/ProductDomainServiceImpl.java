@@ -2,6 +2,7 @@ package cn.cnaworld.base.domain.product.service.impl;
 
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
+import cn.cnaworld.base.domain.product.service.ProductrDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @since
  */
 @Service
-public class ProductDomainServiceImpl implements OrderDomainService {
+public class ProductDomainServiceImpl implements ProductrDomainService {
 
     @Autowired
     private OrderRepository orderRepository;

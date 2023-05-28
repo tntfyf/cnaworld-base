@@ -63,4 +63,21 @@ public class OrderController {
         return ResponseResult.success();
     }
 
+    /**
+     * 接入层响应外部请求
+     */
+    @GetMapping("/domainEvent/{orderId}")
+    @CnaAopLog
+    @ApiOperation("领域事件传播，下单成功通知商品领域下单成功事件")
+    public ResponseResult<String> domainEvent(@PathVariable long orderId){
+        //使用订单领域工厂实例化订单领域聚合根对象
+        Order order = new OrderFactory()
+                .orderId(orderId)
+                .orderBuyerPhone("1")
+                .build();
+        //调用领域服务方法
+        order.success();
+        return ResponseResult.success();
+    }
+
 }

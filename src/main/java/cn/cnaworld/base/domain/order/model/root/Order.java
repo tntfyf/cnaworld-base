@@ -6,7 +6,7 @@ import cn.cnaworld.base.domain.order.model.vo.OrderType;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
-import cn.cnaworld.base.infrastructure.bus.DomianEventBus;
+import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
 import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
 import lombok.*;
 
@@ -28,7 +28,7 @@ public class Order extends OrdersPo {
     //订单领域服务
     private OrderDomainService orderDomainService =  SpringBeanUtil.getBean(OrderDomainService.class);
 
-    private DomianEventBus eventBus;
+    private DomainEventBus eventBus = SpringBeanUtil.getBean(DomainEventBus.class);;
 
     private Goods goods;
 
@@ -54,6 +54,10 @@ public class Order extends OrdersPo {
         orderDomainService.domainLogicalProcessing();
     }
 
+    /**
+     * 下单成功通知商品领域下单成功事件
+     * @date 2023/5/29
+     */
     public void success() {
         eventBus.post(new OrderEvent(this));
     }
