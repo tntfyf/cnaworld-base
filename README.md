@@ -3,60 +3,78 @@
 
 作用：
 
-项目基于DDD领域模型进行的分层，api 接入层 、 domain 领域层 、  infrastructure 基础层。
+项目基于DDD领域模型进行的分层，api 接入层 、application  应用层、 domain 领域层 、 infrastructure 基础层。
 
 目录
 
-├─com.mashibing.ddd
+```
+├─cn.cnaworld.base
 │    │
-│    ├─apis   API接口层
-│    │    ├─model     视图模型,数据模型定义 vo/dto（大多数情況是一样的）
-│    │    ├─assembler    装配器，实现模型转换eg. apiModel&#x3c;=> domainModel
-│    │    └─controller   控制器，对外提供（Restful）接口
+│    ├─api   API接口层
+│    │    ├─controller 控制器，对外提供（Restful）接口
+│    │    ├─model      视图模型,数据模型定义 vo/dto（大多数情況是一样的）
 │    │
-│    ├─application   应用层
-│    │    ├─service  应用服务，非核心服务
-│    │    ├─task     任务定义，协调领域模型
-│    │    └─***      others
+│    ├─application    应用层
+│    │    ├─service   应用服务，负责领域间服务编排，胶水层
+│    │    ├─assembler 装配器，实现模型转换DO到DTO、VO的转换
+│    │    ├─task      任务定义，协调领域模型
 │    │
 │    ├─domain   领域层
-│    │    ├─common       公共代码抽取，限于领域层有效
-│    │    ├─events       领域事件
-│    │    ├─model        领域模型
-│    │    │    ├─dict    领域划分的模块，可理解为子域划分
-│    │    │    │    ├─DictVo.java       领域值对象
-│    │    │    │    ├─DictEntity.java   领域实体，充血的领域模型，如本身的CRUD操作在此处
-│    │    │    │    ├─DictAgg.java      领域聚合，通常表现为实体的聚合，需要有聚合根
-│    │    │    │    └─DictService.java  领域服务，不能归与上述模型，如分页条件查询等可写在此处
-│    │    │    ├─xxx
-│    │    │    │    ├─xxxEntity.java
-│    │    │    │    ├─bbbAgg.java
-│    │    │    │    └─cccAgg.java
-│    │    ├─service      领域服务类，一些不能归属某个具体领域模型的行为
-│    │    └─factory      工厂类，负责复杂领域对象创建，封装细节
+│    │    ├─order         订单领域
+│    │    │    ├─event    领域事件
+│    │    │    ├─factory  领域工厂
+│    │    │    ├─model    模型层
+│    │    │    │    ├─entity  实体
+│    │    │    │    ├─root    聚合根
+│    │    │    │    ├─vo      值对象
+│    │    │    ├─repository   仓储层
+│    │    │    │    ├─facade       仓储接口
+│    │    │    │    ├─orm          orm框架实现
+│    │    │    │    ├─persistence  仓储持久化实现
+│    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
+│    │    │
+│    │    ├─product  商品领域
+│    │    │    ├─event    领域事件
+│    │    │    ├─factory  领域工厂
+│    │    │    ├─model    模型层
+│    │    │    │    ├─entity  实体
+│    │    │    │    ├─root    聚合根
+│    │    │    │    ├─vo      值对象
+│    │    │    ├─repository   仓储层
+│    │    │    │    ├─facade       仓储接口
+│    │    │    │    ├─orm          orm框架实现
+│    │    │    │    ├─persistence  仓储持久化实现
+│    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
 │    │
 │    ├─infrastructure  基础设施层
-│    │    ├─persistent   持久化机制
-│    │    │    ├─po           持久化对象
-│    │    │    └─repository   仓储类，持久化接口&实现，可与ORM映射框架结合
-│    │    ├─general      通用技术支持，向其他层输出通用服务
-│    │    │    ├─config       配置类
-│    │    │    ├─toolkit      工具类
-│    │    │    └─common       基础公共模块等
+│    │    ├─component  框架组件
+│    │    │    ├─bus              领域消息总线
+│    │    │    └─baseclass        基础类
+│    │    │    └─exceptionhandler 统一异常处理 
+│    │    ├─config      配置类，统一配置管理
+│    │    ├─utils       工具类
 │    │
 │    └─resources
-│        ├─statics  静态资源
-│        ├─template 系统页面
-│        └─application.yml   全局配置文件
+│    │    ├─log4j2    日志配置
+│    │    ├─redisson  缓存配置
+│    │    ├─smart-doc 接口文档配置
+│    │    ├─static
+│    │    │    └─doc      生成的静态接口文档
+│    │    │    └─template 静态页面模板
+│    │    └─application.yml  全局配置文件
+│    │    └─application-site.yml 本地环境配置文件
+│    │    └─application-dev.yml  测试环境配置文件
+│    │    └─application-prod.yml 生产环境配置文件
+```
 
 1. 集成基础功能组件 。
 
    ```xml
-   <!--详细用法，请参见：https://github.com/tntfyf/cnaworld-core-->
+   <!--详细用法，请参见：https://github.com/tntfyf/cnaworld-spring-boot-starter-->
    <dependency>
-             <groupId>cn.cnaworld.framework</groupId>
-             <artifactId>core</artifactId>
-             <version>{latest}</version>
+     <groupId>cn.cnaworld.framework</groupId>
+     <artifactId>cnaworld-spring-boot-starter</artifactId>
+     <version>{latest}</version>
    </dependency>
    ```
 

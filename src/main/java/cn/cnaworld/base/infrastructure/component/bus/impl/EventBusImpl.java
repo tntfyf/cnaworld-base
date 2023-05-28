@@ -20,7 +20,6 @@ import javax.annotation.PostConstruct;
 /**
  * @author Lucifer
  */
-@Component
 @Slf4j
 public class EventBusImpl implements ApplicationContextAware, DomainEventBus {
 
