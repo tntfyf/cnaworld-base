@@ -35,15 +35,15 @@ public class CnaworldBaseCodeGenerator {
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
 				.parent("cn.cnaworld.base.domain") //父包名 默认值:com.baomidou
-				.moduleName("user") //父包模块名 默认值:无
-				.entity("entity") //Entity包名 默认值:entity
-				.service("service") //Service包名 默认值:service
-				.serviceImpl("service.impl") //Service Impl包名 默认值:service.impl
-				.mapper("mapper") //Mapper包名 默认值:mapper
-				.xml("mapper.xml") //Mapper XML包名 默认值:mapper.xml
-				.controller("controller") //Controller包名 默认值:controller
+				.moduleName("order") //父包模块名 默认值:无
+				.entity("repository.orm.po") //Entity包名 默认值:entity
+				.service("repository.orm") //Service包名 默认值:service
+				.serviceImpl("repository.orm.impl") //Service Impl包名 默认值:service.impl
+				.mapper("repository.orm.mapper") //Mapper包名 默认值:mapper
+				.xml("repository.orm.mapper.xml") //Mapper XML包名 默认值:mapper.xml
+				//.controller("controller") //Controller包名 默认值:controller
 				.build();
-		TemplateConfig templateConfig = new TemplateConfig.Builder().build(); // 激活所有默认模板
+		TemplateConfig templateConfig = new TemplateConfig.Builder().controller("").build(); // 激活所有默认模板
 		//LikeTable likeTable=new LikeTable("operate_log");
 		StrategyConfig strategyConfig = new StrategyConfig.Builder()
 				.enableCapitalMode()//开启大写命名
@@ -52,13 +52,13 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("sys_user")//增加表匹配(内存过滤)
+				.addInclude("orders")//增加表匹配(内存过滤)
+				//.addInclude("goods")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
 				//.addTablePrefix("")//增加表前缀
 				//实体策略配置
 				.entityBuilder()//实体策略配置
-					//.nameConvert(null)//名称转换实现
 					.superClass(CnaWorldBaseEntity.class)//父类W
 					//.enableColumnConstant()//开启生成字段常量W
 					//.enableChainModel()//开启链式模型
@@ -105,6 +105,8 @@ public class CnaworldBaseCodeGenerator {
 					.enableBaseResultMap()//启用BaseResultMap生成
 					.enableBaseColumnList()//启用BaseColumnList
 				.build();
+
+		strategyConfig.entityBuilder().nameConvert(new INameConvertCust(strategyConfig));
 
 		InjectionConfig injectionConfig = new InjectionConfig.Builder().build();
 		// 代码生成器

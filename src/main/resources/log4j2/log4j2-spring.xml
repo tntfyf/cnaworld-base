@@ -13,7 +13,7 @@
         <property name="BASE_PATH_ROLLOVER" value="/data/logs/${SERVER_NAME}/%d{yyyy-MM}/%d{yyyy-MM-dd}/${LOCAL_IP}" />
         <property name="BASE_PATH_DELETE" value="/data/logs/${SERVER_NAME}" />
         <property name="CHARSET" value="utf-8"/>
-        <property name="LOG_PATTERN">%style{[%d{yyyy-MM-d d HH:mm:ss.SSS}]}{bright,Blue} - %style{[%-4.22thread]}{bright,magenta} - %highlight{[%-4.5level]}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} - %style{[%-41.41logger{1.}]- [%-30F:%L]}{cyan}  : %msg%n</property>
+        <property name="LOG_PATTERN">%style{[%d{yyyy-MM-d d HH:mm:ss.SSS}]}{bright,Blue} - %style{[%-4.22thread]}{bright,magenta} - %highlight{[%-4.5level]}{ERROR=Bright RED, WARN=Bright Yellow, INFO=Bright Green, DEBUG=Bright Cyan, TRACE=Bright White} - %style{[%-41.41logger{1.}] - [%-30F:%L]}{cyan}  : %msg%n</property>
         <!-- <property name="LOG_PATTERN">[%d{yyyy-MM-d d HH:mm:ss.SSS}] - [%-4.22thread] - [%-4.5level] - [%logger] - [%-30F:%L] : %msg%n</property> -->
         <!--日志级别以及优先级排序: OFF 0 > FATAL 100 > ERROR 200 > WARN 300 > INFO 400 > DEBUG 500 > TRACE 600 > ALL 700-->
         <!-- 日志默认同类型日志,多久生成一个新的日志文件,这个配置需要和filePattern结合使用;

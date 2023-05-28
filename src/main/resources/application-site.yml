@@ -28,16 +28,16 @@ cnaworld:
   system-config:
     config-name:
       sever-code: "test-core"  #自定义配置 #通用配置
-  log:
-    log-properties:
-      - path-name: cn.cnaworld.base.domain.student.controller
-        log-level: error
-      - path-name: cn.cnaworld.base.domain.student
-        log-level: warn
-      - path-name: cn.cnaworld.base.domain.student.controller.StudentController
-        log-level: error
-      - path-name: cn.cnaworld.framework.infrastructure.config
-        log-level: warn
+#  log:
+#    log-properties:
+#      - path-name: cn.cnaworld.base.domain.student.controller
+#        log-level: error
+#      - path-name: cn.cnaworld.base.domain.student
+#        log-level: warn
+#      - path-name: cn.cnaworld.base.domain.student.controller.StudentController
+#        log-level: error
+#      - path-name: cn.cnaworld.framework.infrastructure.config
+#        log-level: warn
 
 mybatis-plus:
   configuration:
