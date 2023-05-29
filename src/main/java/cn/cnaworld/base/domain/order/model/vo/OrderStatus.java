@@ -5,9 +5,10 @@ package cn.cnaworld.base.domain.order.model.vo;
  * @date 2023/5/26
  * @since
  */
-public enum OrderType {
+public enum OrderStatus {
 
-    typeA,
-    typeB
+    success,
+    pending,
+    cancel
 
 }

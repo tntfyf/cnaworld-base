@@ -1,6 +1,8 @@
 package cn.cnaworld.base.domain.product.event;
 
 import cn.cnaworld.base.domain.order.event.OrderEvent;
+import cn.cnaworld.base.domain.order.model.root.Order;
+import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEvent;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.ApplicationListener;
@@ -19,8 +21,13 @@ public class ProductListener implements ApplicationListener<DomainEvent> {
      */
     @Override
     public void onApplicationEvent(@NotNull DomainEvent event) {
+        //判断是否是订单领域事件
         if (event instanceof OrderEvent) {
-            System.out.println("处理订单事件，加减库存"+event);
+            Order order = (Order) event.getSource();
+            //判断订单领域事件是否是成功事件
+            if(OrderStatus.success.equals(order.getOrderStatus())){
+                System.out.println("处理订单事件，加减库存"+event);
+            }
         }
     }
 }
