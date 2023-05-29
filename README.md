@@ -4,15 +4,16 @@
 作用：
 
 项目基于DDD领域模型进行的分层，api 接入层 、 domain 领域层 、  infrastructure 基础层。
-
+领域内采用MVC模式
+属于DDD+MVC的结合
 1. 集成基础功能组件 。
 
    ```xml
-   <!--详细用法，请参见：https://github.com/tntfyf/cnaworld-core-->
+   <!--详细用法，请参见：https://github.com/tntfyf/cnaworld-spring-boot-starter-->
    <dependency>
-             <groupId>cn.cnaworld.framework</groupId>
-             <artifactId>core</artifactId>
-             <version>{latest}</version>
+     <groupId>cn.cnaworld.framework</groupId>
+     <artifactId>cnaworld-spring-boot-starter</artifactId>
+     <version>{latest}</version>
    </dependency>
    ```
 
