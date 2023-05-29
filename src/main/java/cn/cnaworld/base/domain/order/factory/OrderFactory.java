@@ -2,7 +2,7 @@ package cn.cnaworld.base.domain.order.factory;
 
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.root.Order;
-import cn.cnaworld.base.domain.order.model.vo.OrderType;
+import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 
 /**
  * @author Administrator
@@ -39,8 +39,8 @@ public class OrderFactory extends Order{
         return this;
     }
 
-    public OrderFactory orderType(OrderType orderType) {
-        this.setOrderType(orderType);
+    public OrderFactory orderStatus(OrderStatus orderStatus) {
+        this.setOrderStatus(orderStatus);
         return this;
     }
 

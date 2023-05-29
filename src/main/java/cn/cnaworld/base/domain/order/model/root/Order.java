@@ -2,7 +2,7 @@ package cn.cnaworld.base.domain.order.model.root;
 
 import cn.cnaworld.base.domain.order.event.OrderEvent;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
-import cn.cnaworld.base.domain.order.model.vo.OrderType;
+import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
@@ -32,7 +32,7 @@ public class Order extends OrdersPo {
 
     private Goods goods;
 
-    private OrderType orderType;
+    private OrderStatus orderStatus;
 
     /**
      * 领域方法查询订单领域信息
@@ -59,6 +59,7 @@ public class Order extends OrdersPo {
      * @date 2023/5/29
      */
     public void success() {
+        this.setOrderStatus(OrderStatus.success);
         eventBus.post(new OrderEvent(this));
     }
 
