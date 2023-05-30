@@ -1,14 +1,18 @@
 package cn.cnaworld.base.domain.order.model.root;
 
 import cn.cnaworld.base.domain.order.event.OrderEvent;
+import cn.cnaworld.base.domain.order.event.vo.OrderEventVo;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
+import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
 import lombok.*;
+
+import java.io.Serializable;
 
 /**
  * 订单聚合根
@@ -21,14 +25,14 @@ import lombok.*;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order extends OrdersPo {
+public class Order extends OrdersPo  {
     //订单领域仓储
     private OrderRepository orderRepository = SpringBeanUtil.getBean(OrderRepository.class);
 
     //订单领域服务
     private OrderDomainService orderDomainService =  SpringBeanUtil.getBean(OrderDomainService.class);
 
-    private DomainEventBus eventBus = SpringBeanUtil.getBean(DomainEventBus.class);;
+    private DomainEventBus eventBus = SpringBeanUtil.getBean(DomainEventBus.class);
 
     private Goods goods;
 
@@ -60,7 +64,8 @@ public class Order extends OrdersPo {
      */
     public void success() {
         this.setOrderStatus(OrderStatus.success);
-        eventBus.post(new OrderEvent(this));
+        OrderEventVo orderEventVo = BeanCopierUtil.copy(this, OrderEventVo.class);
+        eventBus.post(new OrderEvent(orderEventVo));
     }
 
 }
