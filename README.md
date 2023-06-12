@@ -23,6 +23,7 @@
 │    │    ├─order         订单领域
 │    │    │    ├─event    领域事件
 │    │    │    ├─factory  领域工厂
+│    │    │    ├─gateway  领域网关
 │    │    │    ├─model    模型层
 │    │    │    │    ├─entity  实体
 │    │    │    │    ├─root    聚合根
@@ -35,6 +36,7 @@
 │    │    ├─product  商品领域
 │    │    │    ├─event    领域事件
 │    │    │    ├─factory  领域工厂
+│    │    │    ├─gateway  领域网关
 │    │    │    ├─model    模型层
 │    │    │    │    ├─entity  实体
 │    │    │    │    ├─root    聚合根
