@@ -1,6 +1,7 @@
-package cn.cnaworld.base.domain.product.repository.orm.mapper;
+package cn.cnaworld.base.infrastructure.orm.product.mapper;
 
-import cn.cnaworld.base.domain.product.repository.orm.po.ProductPo;
+
+import cn.cnaworld.base.infrastructure.orm.product.po.ProductPo;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaWorldBaseMapper;
 
 /**

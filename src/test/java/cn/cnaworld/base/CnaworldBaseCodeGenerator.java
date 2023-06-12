@@ -34,13 +34,13 @@ public class CnaworldBaseCodeGenerator {
 				.commentDate("yyyy-MM-dd")//注释日期 默认值: yyyy-MM-dd
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
-				.parent("cn.cnaworld.base.domain") //父包名 默认值:com.baomidou
+				.parent("cn.cnaworld.base.infrastructure.orm") //父包名 默认值:com.baomidou
 				.moduleName("order") //父包模块名 默认值:无
-				.entity("repository.orm.po") //Entity包名 默认值:entity
-				.service("repository.orm") //Service包名 默认值:service
-				.serviceImpl("repository.orm.impl") //Service Impl包名 默认值:service.impl
-				.mapper("repository.orm.mapper") //Mapper包名 默认值:mapper
-				.xml("repository.orm.mapper.xml") //Mapper XML包名 默认值:mapper.xml
+				.entity("repository.po") //Entity包名 默认值:entity
+				.service("repository") //Service包名 默认值:service
+				.serviceImpl("repository.impl") //Service Impl包名 默认值:service.impl
+				.mapper("repository.mapper") //Mapper包名 默认值:mapper
+				.xml("repository.mapper.xml") //Mapper XML包名 默认值:mapper.xml
 				//.controller("controller") //Controller包名 默认值:controller
 				.build();
 		TemplateConfig templateConfig = new TemplateConfig.Builder().controller("").build(); // 激活所有默认模板

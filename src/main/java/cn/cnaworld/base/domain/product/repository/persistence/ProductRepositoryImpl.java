@@ -1,10 +1,9 @@
 package cn.cnaworld.base.domain.product.repository.persistence;
 
-import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.domain.product.model.root.Product;
 import cn.cnaworld.base.domain.product.repository.facade.ProductRepository;
-import cn.cnaworld.base.domain.product.repository.orm.IProductPoService;
-import cn.cnaworld.base.domain.product.repository.orm.po.ProductPo;
+import cn.cnaworld.base.infrastructure.orm.product.IProductPoService;
+import cn.cnaworld.base.infrastructure.orm.product.po.ProductPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

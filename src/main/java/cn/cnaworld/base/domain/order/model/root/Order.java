@@ -5,14 +5,12 @@ import cn.cnaworld.base.domain.order.event.vo.OrderEventVo;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
+import cn.cnaworld.base.infrastructure.orm.order.po.OrdersPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
 import lombok.*;
-
-import java.io.Serializable;
 
 /**
  * 订单聚合根
@@ -25,7 +23,7 @@ import java.io.Serializable;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order extends OrdersPo  {
+public class Order extends OrdersPo {
     //订单领域仓储
     private OrderRepository orderRepository = SpringBeanUtil.getBean(OrderRepository.class);
 

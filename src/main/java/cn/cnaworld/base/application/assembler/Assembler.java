@@ -3,7 +3,6 @@ package cn.cnaworld.base.application.assembler;
 import cn.cnaworld.base.api.model.dto.OrderAndProductInfoDto;
 import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.domain.product.model.root.Product;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Lucifer

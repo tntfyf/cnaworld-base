@@ -1,5 +1,5 @@
 # Spring boot base 基础服务
-## 1.0.0 版本
+## 1.0.1.2 版本 ORM下沉
 
 作用：
 
@@ -29,7 +29,6 @@
 │    │    │    │    ├─vo      值对象
 │    │    │    ├─repository   仓储层
 │    │    │    │    ├─facade       仓储接口
-│    │    │    │    ├─orm          orm框架实现
 │    │    │    │    ├─persistence  仓储持久化实现
 │    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
 │    │    │
@@ -42,7 +41,6 @@
 │    │    │    │    ├─vo      值对象
 │    │    │    ├─repository   仓储层
 │    │    │    │    ├─facade       仓储接口
-│    │    │    │    ├─orm          orm框架实现
 │    │    │    │    ├─persistence  仓储持久化实现
 │    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
 │    │
@@ -52,7 +50,8 @@
 │    │    │    └─baseclass        基础类
 │    │    │    └─exceptionhandler 统一异常处理 
 │    │    ├─config      配置类，统一配置管理
-│    │    ├─utils       工具类
+│    │    ├─orm         orm框架实现
+│    │    ├─utils       工具类	
 │    │
 │    └─resources
 │    │    ├─log4j2    日志配置

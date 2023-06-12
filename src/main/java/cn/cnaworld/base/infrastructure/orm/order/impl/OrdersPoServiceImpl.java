@@ -1,8 +1,8 @@
-package cn.cnaworld.base.domain.order.repository.orm.impl;
+package cn.cnaworld.base.infrastructure.orm.order.impl;
 
-import cn.cnaworld.base.domain.order.repository.orm.IOrdersPoService;
-import cn.cnaworld.base.domain.order.repository.orm.mapper.OrdersPoMapper;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.orm.order.IOrdersPoService;
+import cn.cnaworld.base.infrastructure.orm.order.mapper.OrdersPoMapper;
+import cn.cnaworld.base.infrastructure.orm.order.po.OrdersPo;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.impl.CnaWorldBaseServiceImpl;
 import org.springframework.stereotype.Service;
 

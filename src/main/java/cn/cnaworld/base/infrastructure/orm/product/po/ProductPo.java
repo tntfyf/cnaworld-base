@@ -1,4 +1,4 @@
-package cn.cnaworld.base.domain.product.repository.orm.po;
+package cn.cnaworld.base.infrastructure.orm.product.po;
 
 import cn.cnaworld.base.infrastructure.component.baseclass.CnaWorldBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;

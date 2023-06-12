@@ -1,7 +1,5 @@
 package cn.cnaworld.base.domain.order.service;
 
-import org.springframework.stereotype.Service;
-
 /**
  * 订单领域服务
  * @author Administrator

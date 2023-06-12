@@ -1,8 +1,9 @@
-package cn.cnaworld.base.domain.product.repository.orm.impl;
+package cn.cnaworld.base.infrastructure.orm.product.impl;
 
-import cn.cnaworld.base.domain.product.repository.orm.IProductPoService;
-import cn.cnaworld.base.domain.product.repository.orm.mapper.ProductPoMapper;
-import cn.cnaworld.base.domain.product.repository.orm.po.ProductPo;
+
+import cn.cnaworld.base.infrastructure.orm.product.IProductPoService;
+import cn.cnaworld.base.infrastructure.orm.product.mapper.ProductPoMapper;
+import cn.cnaworld.base.infrastructure.orm.product.po.ProductPo;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.impl.CnaWorldBaseServiceImpl;
 import org.springframework.stereotype.Service;
 

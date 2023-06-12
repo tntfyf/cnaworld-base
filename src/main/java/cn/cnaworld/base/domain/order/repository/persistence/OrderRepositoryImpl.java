@@ -3,14 +3,13 @@ package cn.cnaworld.base.domain.order.repository.persistence;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
-import cn.cnaworld.base.domain.order.repository.orm.IGoodsPoService;
-import cn.cnaworld.base.domain.order.repository.orm.IOrdersPoService;
-import cn.cnaworld.base.domain.order.repository.orm.po.GoodsPo;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.orm.order.IGoodsPoService;
+import cn.cnaworld.base.infrastructure.orm.order.IOrdersPoService;
+import cn.cnaworld.base.infrastructure.orm.order.po.GoodsPo;
+import cn.cnaworld.base.infrastructure.orm.order.po.OrdersPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 
 /**

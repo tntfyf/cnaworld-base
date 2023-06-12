@@ -1,7 +1,6 @@
 package cn.cnaworld.base.infrastructure.utils;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.stereotype.Component;
 
 /**
  * @author Lucifer
