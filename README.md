@@ -31,7 +31,7 @@
 │    │    │    ├─repository   仓储层
 │    │    │    │    ├─facade       仓储接口
 │    │    │    │    ├─persistence  仓储持久化实现
-│    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
+│    │    │    ├─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
 │    │    │
 │    │    ├─product  商品领域
 │    │    │    ├─event    领域事件
@@ -44,7 +44,7 @@
 │    │    │    ├─repository   仓储层
 │    │    │    │    ├─facade       仓储接口
 │    │    │    │    ├─persistence  仓储持久化实现
-│    │    │    ├─service  领域服务，处理领域中聚合根值对象实体之间的业务逻辑
+│    │    │    ├─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
 │    │
 │    ├─infrastructure  基础设施层
 │    │    ├─component  框架组件
