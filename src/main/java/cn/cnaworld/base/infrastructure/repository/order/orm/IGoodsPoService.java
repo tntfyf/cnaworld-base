@@ -1,7 +1,7 @@
-package cn.cnaworld.base.infrastructure.orm.order;
+package cn.cnaworld.base.infrastructure.repository.order.orm;
 
 
-import cn.cnaworld.base.infrastructure.orm.order.po.GoodsPo;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsPo;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.CnaWorldBaseService;
 
 /**

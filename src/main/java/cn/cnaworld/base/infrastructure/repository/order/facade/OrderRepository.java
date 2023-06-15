@@ -1,4 +1,4 @@
-package cn.cnaworld.base.domain.order.repository.facade;
+package cn.cnaworld.base.infrastructure.repository.order.facade;
 
 import cn.cnaworld.base.domain.order.model.root.Order;
 

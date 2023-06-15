@@ -1,4 +1,4 @@
-package cn.cnaworld.base.domain.product.repository.facade;
+package cn.cnaworld.base.infrastructure.repository.product.facade;
 
 import cn.cnaworld.base.domain.product.model.root.Product;
 

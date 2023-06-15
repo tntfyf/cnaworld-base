@@ -1,7 +1,7 @@
 package cn.cnaworld.base.domain.product.model.root;
 
-import cn.cnaworld.base.domain.product.repository.facade.ProductRepository;
-import cn.cnaworld.base.infrastructure.orm.product.po.ProductPo;
+import cn.cnaworld.base.infrastructure.repository.product.facade.ProductRepository;
+import cn.cnaworld.base.infrastructure.repository.product.orm.po.ProductPo;
 import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
 
 /**

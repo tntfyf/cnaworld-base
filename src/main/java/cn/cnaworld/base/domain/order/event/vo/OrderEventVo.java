@@ -2,7 +2,7 @@ package cn.cnaworld.base.domain.order.event.vo;
 
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
-import cn.cnaworld.base.infrastructure.orm.order.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

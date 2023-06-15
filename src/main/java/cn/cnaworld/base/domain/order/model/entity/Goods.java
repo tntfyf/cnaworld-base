@@ -2,7 +2,7 @@ package cn.cnaworld.base.domain.order.model.entity;
 
 
 
-import cn.cnaworld.base.infrastructure.orm.order.po.GoodsPo;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsPo;
 
 import java.io.Serializable;
 

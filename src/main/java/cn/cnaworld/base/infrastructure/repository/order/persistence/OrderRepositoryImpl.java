@@ -1,12 +1,12 @@
-package cn.cnaworld.base.domain.order.repository.persistence;
+package cn.cnaworld.base.infrastructure.repository.order.persistence;
 
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.root.Order;
-import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
-import cn.cnaworld.base.infrastructure.orm.order.IGoodsPoService;
-import cn.cnaworld.base.infrastructure.orm.order.IOrdersPoService;
-import cn.cnaworld.base.infrastructure.orm.order.po.GoodsPo;
-import cn.cnaworld.base.infrastructure.orm.order.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.repository.order.facade.OrderRepository;
+import cn.cnaworld.base.infrastructure.repository.order.orm.IGoodsPoService;
+import cn.cnaworld.base.infrastructure.repository.order.orm.IOrdersPoService;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsPo;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
