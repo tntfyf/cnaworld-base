@@ -2,9 +2,9 @@ package cn.cnaworld.base.application.service;
 
 import cn.cnaworld.base.api.model.dto.OrderAndProductInfoDto;
 import cn.cnaworld.base.application.assembler.Assembler;
-import cn.cnaworld.base.domain.order.factory.OrderFactory;
-import cn.cnaworld.base.domain.order.model.root.Order;
-import cn.cnaworld.base.domain.product.model.root.Product;
+import cn.cnaworld.base.domain.factory.order.OrderFactory;
+import cn.cnaworld.base.domain.model.order.root.Order;
+import cn.cnaworld.base.domain.model.product.root.Product;
 import org.springframework.stereotype.Service;
 
 /**
