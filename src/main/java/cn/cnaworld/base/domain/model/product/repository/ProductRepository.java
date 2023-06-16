@@ -21,6 +21,6 @@ public interface ProductRepository {
      * @param productId 商品Id
      * @return 商品信息
      */
-    Product queryProductById(Long productId);
+    Product getProductById(Long productId);
 
 }

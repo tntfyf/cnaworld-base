@@ -17,7 +17,7 @@ public class OrderDomainServiceImpl implements OrderDomainService {
     private OrderRepository orderRepository;
 
     @Override
-    public void domainLogicalProcessing() {
+    public void domainLogicalProcessing(long orderId) {
         System.out.println("处理领域中聚合与实体或者值对象之间的业务逻辑");
         System.out.println("仓储进行处理");
     }

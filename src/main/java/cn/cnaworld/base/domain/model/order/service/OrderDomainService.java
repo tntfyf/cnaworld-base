@@ -8,6 +8,6 @@ package cn.cnaworld.base.domain.model.order.service;
  */
 public interface OrderDomainService {
 
-    void domainLogicalProcessing();
+    void domainLogicalProcessing(long orderId);
 
 }

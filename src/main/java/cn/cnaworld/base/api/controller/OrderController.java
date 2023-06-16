@@ -3,8 +3,6 @@ package cn.cnaworld.base.api.controller;
 
 import cn.cnaworld.base.api.model.dto.*;
 import cn.cnaworld.base.application.service.ApplicationService;
-import cn.cnaworld.base.domain.factory.order.OrderFactory;
-import cn.cnaworld.base.domain.model.order.root.Order;
 import cn.cnaworld.framework.infrastructure.annotation.CnaAopLog;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import io.swagger.annotations.Api;
@@ -41,9 +39,10 @@ public class OrderController {
     @GetMapping("/getOrderInfo/{orderId}")
     @CnaAopLog
     @ApiOperation("查询订单数据及库存数据")
-    public ResponseResult<OrderAndProductInfoDto> getOrderInfo(@PathVariable long orderId){
+    public ResponseResult<OrderAndProductInfoDto> getOrderInfo(@PathVariable String orderId){
+        long orderIdLong=Long.parseLong(orderId);
         //应用层服务响应接入层的请求，开始进行领域服务编排
-        return ResponseResult.success(applicationService.getOrderAndProductInfo(orderId));
+        return ResponseResult.success(applicationService.getOrderAndProductInfo(orderIdLong));
     }
 
     /**
@@ -53,13 +52,7 @@ public class OrderController {
     @CnaAopLog
     @ApiOperation("调用订单领域服务处理领域中聚合根值对象实体之间的业务逻辑据")
     public ResponseResult<String> domainLogicalProcessing(@PathVariable long orderId){
-        //使用订单领域工厂实例化订单领域聚合根对象
-        Order order = new OrderFactory()
-                .orderId(orderId)
-                .orderBuyerPhone("1")
-                .build();
-        //调用领域服务方法
-        order.domainLogicalProcessing();
+        applicationService.domainLogicalProcessing(orderId);
         return ResponseResult.success();
     }
 
@@ -69,14 +62,8 @@ public class OrderController {
     @GetMapping("/domainEvent/{orderId}")
     @CnaAopLog
     @ApiOperation("领域事件传播，下单成功通知商品领域下单成功事件")
-    public ResponseResult<String> domainEvent(@PathVariable long orderId){
-        //使用订单领域工厂实例化订单领域聚合根对象
-        Order order = new OrderFactory()
-                .orderId(orderId)
-                .orderBuyerPhone("1")
-                .build();
-        //调用领域服务方法
-        order.success();
+    public ResponseResult<String> createOrder(@PathVariable long orderId){
+        applicationService.createOrder(orderId);
         return ResponseResult.success();
     }
 

@@ -27,9 +27,6 @@ public class Order extends OrdersPo  {
     //订单领域仓储
     private OrderRepository orderRepository = SpringBeanUtil.getBean(OrderRepository.class);
 
-    //订单领域服务
-    private OrderDomainService orderDomainService =  SpringBeanUtil.getBean(OrderDomainService.class);
-
     private DomainEventBus eventBus = SpringBeanUtil.getBean(DomainEventBus.class);
 
     private Goods goods;
@@ -43,17 +40,7 @@ public class Order extends OrdersPo  {
      */
     public Order getOrderInfo(){
         //调用订单领域仓库查询
-        return orderRepository.queryOrderById(this.getOrderId());
-    }
-
-    /**
-     * 调用订单领域服务处理领域中聚合根值对象实体之间的业务逻辑
-     * @author Administrator
-     * @date 2023/5/28
-     */
-    public void domainLogicalProcessing(){
-        //调用订单领域服务处理领域中聚合根值对象实体之间的业务逻辑
-        orderDomainService.domainLogicalProcessing();
+        return orderRepository.getOrderById(this.getOrderId());
     }
 
     /**

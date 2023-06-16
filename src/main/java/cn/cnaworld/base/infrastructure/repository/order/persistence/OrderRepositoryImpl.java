@@ -49,7 +49,7 @@ public class OrderRepositoryImpl implements OrderRepository {
      * @param orderId 订单Id
      */
     @Override
-    public Order queryOrderById(Long orderId) {
+    public Order getOrderById(Long orderId) {
         //仓储实际调用ORM框架进行查询
         OrdersPo ordersPo = iOrdersPoService.getById(orderId);
         //PO到DO转换
