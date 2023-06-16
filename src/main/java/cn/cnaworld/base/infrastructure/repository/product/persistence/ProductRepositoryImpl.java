@@ -7,6 +7,7 @@ import cn.cnaworld.base.infrastructure.repository.product.orm.po.ProductPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Lucifer
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0.1.1
  */
 @Service
+@Transactional
 public class ProductRepositoryImpl implements ProductRepository {
 
     @Autowired

@@ -11,6 +11,7 @@ import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Lucifer
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
  * @since 1.0.1.1
  */
 @Service
+@Transactional
 public class OrderRepositoryImpl implements OrderRepository {
 
     @Autowired
