@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Lucifer
  */
 @SpringBootApplication
-@MapperScan("cn.cnaworld.base.domain.**.mapper")
+@MapperScan("cn.cnaworld.base.infrastructure.repository.*.orm.mapper")
 public class CnaworldBaseApplication {
 
     public static void main(String[] args) {
