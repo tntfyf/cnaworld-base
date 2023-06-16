@@ -4,12 +4,12 @@ import cn.cnaworld.base.domain.order.event.OrderEvent;
 import cn.cnaworld.base.domain.order.event.vo.OrderEventVo;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
-import cn.cnaworld.base.infrastructure.repository.order.facade.OrderRepository;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
 import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
 import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
+import cn.cnaworld.framework.infrastructure.exception.BusinessException;
 import lombok.*;
 
 /**
@@ -24,9 +24,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order extends OrdersPo {
-    //订单领域仓储
-    private OrderRepository orderRepository = SpringBeanUtil.getBean(OrderRepository.class);
-
     //订单领域服务
     private OrderDomainService orderDomainService =  SpringBeanUtil.getBean(OrderDomainService.class);
 
@@ -37,23 +34,14 @@ public class Order extends OrdersPo {
     private OrderStatus orderStatus;
 
     /**
-     * 领域方法查询订单领域信息
-     * @author Administrator
-     * @date 2023/5/28
-     */
-    public Order getOrderInfo(){
-        //调用订单领域仓库查询
-        return orderRepository.queryOrderById(this.getOrderId());
-    }
-
-    /**
      * 调用订单领域服务处理领域中聚合根值对象实体之间的业务逻辑
      * @author Administrator
      * @date 2023/5/28
      */
-    public void domainLogicalProcessing(){
-        //调用订单领域服务处理领域中聚合根值对象实体之间的业务逻辑
-        orderDomainService.domainLogicalProcessing();
+    public void checkValid(){
+        if (orderStatus == null || orderStatus.equals(OrderStatus.cancel)){
+            throw new BusinessException("订单已经失效");
+        }
     }
 
     /**

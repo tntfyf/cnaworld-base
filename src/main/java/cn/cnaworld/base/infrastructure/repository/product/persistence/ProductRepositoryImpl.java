@@ -37,7 +37,7 @@ public class ProductRepositoryImpl implements ProductRepository {
      * @param productId 商品Id
      */
     @Override
-    public Product queryProductById(Long productId) {
+    public Product getProductById(Long productId) {
         ProductPo productPo = iProductPoService.getById(productId);
         return BeanCopierUtil.copy(productPo, Product.class);
     }
