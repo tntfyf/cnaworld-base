@@ -11,7 +11,7 @@
  Target Server Version : 80033
  File Encoding         : 65001
 
- Date: 29/05/2023 00:47:26
+ Date: 20/06/2023 14:51:37
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,27 @@ CREATE TABLE `goods`  (
 -- ----------------------------
 -- Records of goods
 -- ----------------------------
-INSERT INTO `goods` VALUES (1, 1, 1, 0, 'admin', 'admin', '2023-05-26 17:55:01.000', '2023-05-26 17:55:03.000');
+INSERT INTO `goods` VALUES (1, 1, 1, 0, 'admin', 'admin', '2023-05-27 17:55:01.000', '2023-05-26 17:55:03.000');
+
+-- ----------------------------
+-- Table structure for goods_ext
+-- ----------------------------
+DROP TABLE IF EXISTS `goods_ext`;
+CREATE TABLE `goods_ext`  (
+  `goods_ext_id` bigint NOT NULL COMMENT '商品ID',
+  `goods_id` bigint NULL DEFAULT NULL COMMENT '所属订单ID',
+  `deleted_db` tinyint(1) NULL DEFAULT NULL COMMENT '逻辑删除',
+  `create_by_db` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '创建者',
+  `update_by_db` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '更新者',
+  `create_time_db` datetime(3) NULL DEFAULT NULL COMMENT '创建日期',
+  `update_time_db` datetime(3) NULL DEFAULT NULL COMMENT '更新日期、乐观锁',
+  PRIMARY KEY (`goods_ext_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of goods_ext
+-- ----------------------------
+INSERT INTO `goods_ext` VALUES (1, 1, 0, 'admin', 'admin', '2023-05-27 17:55:01.000', '2023-05-26 17:55:03.000');
 
 -- ----------------------------
 -- Table structure for operate_log
