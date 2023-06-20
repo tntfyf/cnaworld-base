@@ -2,7 +2,6 @@ package cn.cnaworld.base.domain.product.event;
 
 import cn.cnaworld.base.domain.order.event.OrderEvent;
 import cn.cnaworld.base.domain.order.event.vo.OrderEventVo;
-import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEvent;
 import org.jetbrains.annotations.NotNull;

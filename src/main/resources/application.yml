@@ -42,14 +42,17 @@ mybatis-plus:
       #对应数据库 0 未删除 1 已删除
       logic-not-delete-value: 0  # 逻辑未删除值(对应数据库 ： 0)
       logic-delete-value: 1  # 逻辑已删除值(对应数据库 ： 1)
-  mapper-locations: classpath*:cn/cnaworld/base/domain/**/*.xml
+  mapper-locations: classpath*:cn/cnaworld/base/infrastructure/repository/*/orm/mapper/xml/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: cn.cnaworld.base.domain.**.po,cn.cnaworld.base.domain.**.model
+  typeAliasesPackage: cn.cnaworld.base.infrastructure.repository.*.orm.*.po,cn.cnaworld.base.domain.*.model
   configuration:
    call-setters-on-nulls: true #查询语句中某些字段值为null时依旧返回
 
 
 cnaworld:
+  repository-lazy:
+    enable: true
+    agg-package: "cn/cnaworld/base/domain/*/model/*"
   mybatis-plus:
     auto-insert-fill: true #数据初始化时默认填充，insert时，自动获取fill-strategy-field 中的属性进行填充。
     function-extension: true #扩展逻辑删除相关方法，提供逻辑恢复和直接删除扩展方法。默认true开启。

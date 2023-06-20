@@ -1,14 +1,11 @@
 package cn.cnaworld.base.domain.order.event.vo;
 
-import cn.cnaworld.base.domain.order.event.OrderEvent;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
-import cn.cnaworld.base.domain.order.repository.facade.OrderRepository;
-import cn.cnaworld.base.domain.order.repository.orm.po.OrdersPo;
-import cn.cnaworld.base.domain.order.service.OrderDomainService;
-import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
-import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
-import lombok.*;
+import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.io.Serializable;
 

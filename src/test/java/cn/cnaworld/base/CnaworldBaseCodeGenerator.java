@@ -26,7 +26,7 @@ public class CnaworldBaseCodeGenerator {
 		GlobalConfig globalConfig = GeneratorBuilder.globalConfigBuilder()
 				.fileOverride()//是否覆盖已生成文件 默认值:false
 				.openDir(false)//是否打开生成目录 默认值:true 
-				.outputDir("D:\\CodeRepository\\github\\tntfyf\\cnaworld-base\\src\\main\\java\\")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
+				.outputDir("D:\\Data\\CodeRepository\\github\\tntfyf\\cnaworld-base\\src\\main\\java\\")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
 				.author("Lucifer")//作者名 默认值:无
 				//.enableKotlin()//是否生成kotlin 默认值:false
 				.enableSwagger()//是否生成swagger注解 默认值:false
@@ -34,13 +34,13 @@ public class CnaworldBaseCodeGenerator {
 				.commentDate("yyyy-MM-dd")//注释日期 默认值: yyyy-MM-dd
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
-				.parent("cn.cnaworld.base.domain") //父包名 默认值:com.baomidou
-				.moduleName("order") //父包模块名 默认值:无
-				.entity("repository.orm.po") //Entity包名 默认值:entity
-				.service("repository.orm") //Service包名 默认值:service
-				.serviceImpl("repository.orm.impl") //Service Impl包名 默认值:service.impl
-				.mapper("repository.orm.mapper") //Mapper包名 默认值:mapper
-				.xml("repository.orm.mapper.xml") //Mapper XML包名 默认值:mapper.xml
+				.parent("cn.cnaworld.base.infrastructure.repository.order") //父包名 默认值:com.baomidou
+				.moduleName("orm") //父包模块名 默认值:无
+				.entity("po") //Entity包名 默认值:entity
+				.service("service") //Service包名 默认值:service
+				.serviceImpl("service.impl") //Service Impl包名 默认值:service.impl
+				.mapper("mapper") //Mapper包名 默认值:mapper
+				.xml("mapper.xml") //Mapper XML包名 默认值:mapper.xml
 				//.controller("controller") //Controller包名 默认值:controller
 				.build();
 		TemplateConfig templateConfig = new TemplateConfig.Builder().controller("").build(); // 激活所有默认模板
@@ -52,7 +52,7 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("orders")//增加表匹配(内存过滤)
+				.addInclude("goods_ext")//增加表匹配(内存过滤)
 				//.addInclude("goods")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
