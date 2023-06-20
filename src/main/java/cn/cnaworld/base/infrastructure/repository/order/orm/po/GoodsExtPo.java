@@ -15,26 +15,24 @@ import lombok.*;
  * </p>
  *
  * @author Lucifer
- * @since 2023-05-25
+ * @since 2023-06-20
  */
 @Getter
 @Setter
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper = true)
-@TableName("goods")
-@ApiModel(value = "GoodsPo对象", description = "")
-public class GoodsPo extends CnaWorldBaseEntity {
+@TableName("goods_ext")
+@ApiModel(value = "GoodsExtPo对象", description = "")
+public class GoodsExtPo extends CnaWorldBaseEntity {
+
 
     @ApiModelProperty(value = "商品ID")
-    @TableId(value = "goods_id", type = IdType.ASSIGN_ID)
-    private Long goodsId;
+    @TableId(value = "goods_ext_id", type = IdType.ASSIGN_ID)
+    private Long goodsExtId;
 
     @ApiModelProperty(value = "所属订单ID")
-    @TableField("goods_order_id")
-    private Long goodsOrderId;
+    @TableField("goods_id")
+    private Long goodsId;
 
-    @ApiModelProperty(value = "商品归属产品ID")
-    @TableField("goods_product_id")
-    private Long goodsProductId;
 
 }

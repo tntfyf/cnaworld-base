@@ -21,6 +21,12 @@ public interface OrderRepository{
      * @param orderId 订单Id
      * @return 订单信息
      */
-    Order getOrderById(Long orderId);
+    Order getOrder(Long orderId);
 
+    /**
+     * 查询订单
+     * @param orderId 订单Id
+     * @return 订单信息
+     */
+    Order getOrderLazy(Long orderId);
 }

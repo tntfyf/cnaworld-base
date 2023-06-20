@@ -7,10 +7,14 @@ import cn.cnaworld.base.domain.order.model.vo.OrderStatus;
 import cn.cnaworld.base.domain.order.service.OrderDomainService;
 import cn.cnaworld.base.infrastructure.component.bus.DomainEventBus;
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
-import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
-import cn.cnaworld.base.infrastructure.utils.SpringBeanUtil;
+import cn.cnaworld.base.infrastructure.repository.order.persistence.OrderLazy;
+import cn.cnaworld.framework.infrastructure.component.repositorylazy.annotation.CnaLazy;
 import cn.cnaworld.framework.infrastructure.exception.BusinessException;
+import cn.cnaworld.framework.infrastructure.utils.bean.CnaBeanCopierUtil;
+import cn.cnaworld.framework.infrastructure.utils.bean.CnaSpringBeanUtil;
+import jdk.nashorn.internal.objects.annotations.Property;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 订单聚合根
@@ -20,15 +24,16 @@ import lombok.*;
  */
 @Getter
 @Setter
-@ToString
+@ToString(callSuper=true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Order extends OrdersPo {
     //订单领域服务
-    private OrderDomainService orderDomainService =  SpringBeanUtil.getBean(OrderDomainService.class);
+    private OrderDomainService orderDomainService =  CnaSpringBeanUtil.getBean(OrderDomainService.class);
 
-    private DomainEventBus eventBus = SpringBeanUtil.getBean(DomainEventBus.class);
+    private DomainEventBus eventBus = CnaSpringBeanUtil.getBean(DomainEventBus.class);
 
+    @CnaLazy(LazyProcessor = OrderLazy.LazyGetGoods.class)
     private Goods goods;
 
     private OrderStatus orderStatus;
@@ -50,7 +55,7 @@ public class Order extends OrdersPo {
      */
     public void success() {
         this.setOrderStatus(OrderStatus.success);
-        OrderEventVo orderEventVo = BeanCopierUtil.copy(this, OrderEventVo.class);
+        OrderEventVo orderEventVo = CnaBeanCopierUtil.copy(this, OrderEventVo.class);
         eventBus.post(new OrderEvent(orderEventVo));
     }
 

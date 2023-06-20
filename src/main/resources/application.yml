@@ -50,6 +50,9 @@ mybatis-plus:
 
 
 cnaworld:
+  repository-lazy:
+    enable: true
+    agg-package: "cn/cnaworld/base/domain/*/model/*"
   mybatis-plus:
     auto-insert-fill: true #数据初始化时默认填充，insert时，自动获取fill-strategy-field 中的属性进行填充。
     function-extension: true #扩展逻辑删除相关方法，提供逻辑恢复和直接删除扩展方法。默认true开启。

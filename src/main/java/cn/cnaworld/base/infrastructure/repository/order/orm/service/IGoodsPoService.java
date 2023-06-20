@@ -1,4 +1,4 @@
-package cn.cnaworld.base.infrastructure.repository.order.orm;
+package cn.cnaworld.base.infrastructure.repository.order.orm.service;
 
 
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsPo;

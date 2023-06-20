@@ -7,8 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 /**
  * <p>
@@ -18,7 +17,9 @@ import lombok.EqualsAndHashCode;
  * @author Lucifer
  * @since 2023-05-26
  */
-@Data
+@Getter
+@Setter
+@ToString(callSuper=true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("product")
 @ApiModel(value = "ProductPo对象", description = "")

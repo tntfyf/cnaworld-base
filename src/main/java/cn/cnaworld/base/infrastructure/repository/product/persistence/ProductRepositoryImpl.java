@@ -2,9 +2,9 @@ package cn.cnaworld.base.infrastructure.repository.product.persistence;
 
 import cn.cnaworld.base.domain.product.model.root.Product;
 import cn.cnaworld.base.infrastructure.repository.product.facade.ProductRepository;
-import cn.cnaworld.base.infrastructure.repository.product.orm.IProductPoService;
+import cn.cnaworld.base.infrastructure.repository.product.orm.service.IProductPoService;
 import cn.cnaworld.base.infrastructure.repository.product.orm.po.ProductPo;
-import cn.cnaworld.base.infrastructure.utils.BeanCopierUtil;
+import cn.cnaworld.framework.infrastructure.utils.bean.CnaBeanCopierUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,6 +41,6 @@ public class ProductRepositoryImpl implements ProductRepository {
     @Override
     public Product getProductById(Long productId) {
         ProductPo productPo = iProductPoService.getById(productId);
-        return BeanCopierUtil.copy(productPo, Product.class);
+        return CnaBeanCopierUtil.copy(productPo, Product.class);
     }
 }

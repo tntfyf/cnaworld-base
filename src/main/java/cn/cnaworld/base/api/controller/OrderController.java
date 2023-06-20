@@ -67,4 +67,14 @@ public class OrderController {
         return ResponseResult.success();
     }
 
+    /**
+     * 懒加载
+     */
+    @GetMapping("/orderLazy/{orderId}")
+    @ApiOperation("聚合根懒加载实体")
+    public ResponseResult<String> orderLazy(@PathVariable long orderId){
+        applicationService.orderLazy(orderId);
+        return ResponseResult.success();
+    }
+
 }
