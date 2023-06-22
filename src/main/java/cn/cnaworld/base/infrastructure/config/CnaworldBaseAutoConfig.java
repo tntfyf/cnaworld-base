@@ -2,6 +2,7 @@ package cn.cnaworld.base.infrastructure.config;
 
 import cn.cnaworld.base.infrastructure.component.bus.impl.EventBusImpl;
 import cn.cnaworld.base.infrastructure.config.knife4j.ConflictHandlingCfg;
+import cn.cnaworld.framework.infrastructure.component.repositorylazy.Initialize.AggEntityLazyInitialize;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
@@ -13,6 +14,6 @@ import org.springframework.context.annotation.Import;
  * @since 1.0.0
  */
 @Configuration
-@Import(value = {ConflictHandlingCfg.class, EventBusImpl.class})
+@Import(value = {ConflictHandlingCfg.class, EventBusImpl.class,AggEntityLazyInitialize.class})
 public class CnaworldBaseAutoConfig {}
 

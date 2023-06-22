@@ -40,7 +40,7 @@ public class OrderFactory extends Order{
     }
 
     public OrderFactory orderStatus(OrderStatus orderStatus) {
-        this.setOrderStatus(orderStatus);
+      //  this.setOrderStatus(orderStatus);
         return this;
     }
 
