@@ -15,7 +15,6 @@ spring:
 logging:
   config: classpath:log4j2/log4j2-spring.xml
 
-
 knife4j:
   enable: true
   openapi:
@@ -66,3 +65,6 @@ cnaworld:
         field-class: java.time.LocalDateTime #填充值处理器，实现FieldProcessor的getFieldValue方法，返回值作为属性填充值。
       - field-name: "deletedDb"
         field-value: false #填充值
+    field-encrypt:
+      key: Ssadasa123dsfsda21sdasd
+      algorithm: AES

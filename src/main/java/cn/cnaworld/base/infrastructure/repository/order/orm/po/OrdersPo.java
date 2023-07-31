@@ -1,6 +1,7 @@
 package cn.cnaworld.base.infrastructure.repository.order.orm.po;
 
 import cn.cnaworld.base.infrastructure.component.baseclass.CnaWorldBaseEntity;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.annotation.CnaFieldEncrypt;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -15,7 +16,7 @@ import lombok.*;
  * </p>
  *
  * @author Lucifer
- * @since 2023-05-26
+ * @since 2023-06-23
  */
 @Getter
 @Setter
@@ -45,5 +46,8 @@ public class OrdersPo extends CnaWorldBaseEntity {
     @TableField("sku_properties_name")
     private String skuPropertiesName;
 
+    @ApiModelProperty(value = "加密测试字段")
+    @CnaFieldEncrypt
+    private String encrypt;
 
 }

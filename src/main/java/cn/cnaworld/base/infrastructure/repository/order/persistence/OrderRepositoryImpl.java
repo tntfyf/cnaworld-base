@@ -14,6 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Lucifer
  * @date 2023/5/25
@@ -79,5 +82,18 @@ public class OrderRepositoryImpl implements OrderRepository {
         Goods goods = CnaBeanCopierUtil.copy(goodsPo, Goods.class);
         order.setGoods(goods);
         return order;
+    }
+
+    @Override
+    public void testAutoEncrypt(Long orderId) {
+        List<Long> ids = new ArrayList<>();
+        ids.add(1L);
+        ids.add(1382408225431552L);
+        ids.add(1382414513201152L);
+        List<OrdersPo> ordersPos = iOrdersPoService.listByIds(ids);
+        //OrdersPo ordersPo = iOrdersPoService.getById(orderId);
+        System.out.println(ordersPos);
+//        ordersPo.setOrderId(null);
+//        iOrdersPoService.save(ordersPo);
     }
 }

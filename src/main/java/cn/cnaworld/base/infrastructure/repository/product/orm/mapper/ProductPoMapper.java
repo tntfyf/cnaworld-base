@@ -2,7 +2,7 @@ package cn.cnaworld.base.infrastructure.repository.product.orm.mapper;
 
 
 import cn.cnaworld.base.infrastructure.repository.product.orm.po.ProductPo;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaWorldBaseMapper;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaworldBaseMapper;
 
 /**
  * <p>
@@ -12,6 +12,6 @@ import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapp
  * @author Lucifer
  * @since 2023-05-26
  */
-public interface ProductPoMapper extends CnaWorldBaseMapper<ProductPo> {
+public interface ProductPoMapper extends CnaworldBaseMapper<ProductPo> {
 
 }
