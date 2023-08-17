@@ -29,4 +29,12 @@ public interface OrderRepository{
      * @return 订单信息
      */
     Order getOrderLazy(Long orderId);
+
+    /**
+     * 查询订单
+     * @param orderId 订单Id
+     */
+    void testAutoEncrypt(Long orderId);
+
+
 }

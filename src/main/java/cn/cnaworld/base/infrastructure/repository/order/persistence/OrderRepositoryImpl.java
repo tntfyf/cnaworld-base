@@ -3,16 +3,19 @@ package cn.cnaworld.base.infrastructure.repository.order.persistence;
 import cn.cnaworld.base.domain.order.model.entity.Goods;
 import cn.cnaworld.base.domain.order.model.root.Order;
 import cn.cnaworld.base.infrastructure.repository.order.facade.OrderRepository;
-import cn.cnaworld.base.infrastructure.repository.order.orm.service.IGoodsPoService;
-import cn.cnaworld.base.infrastructure.repository.order.orm.service.IOrdersPoService;
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsPo;
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo;
+import cn.cnaworld.base.infrastructure.repository.order.orm.service.IGoodsPoService;
+import cn.cnaworld.base.infrastructure.repository.order.orm.service.IOrdersPoService;
 import cn.cnaworld.framework.infrastructure.utils.bean.CnaBeanCopierUtil;
 import cn.cnaworld.framework.infrastructure.utils.cglib.AggEntityLazyFactory;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Lucifer
@@ -79,5 +82,18 @@ public class OrderRepositoryImpl implements OrderRepository {
         Goods goods = CnaBeanCopierUtil.copy(goodsPo, Goods.class);
         order.setGoods(goods);
         return order;
+    }
+
+    @Override
+    public void testAutoEncrypt(Long orderId) {
+        List<Long> ids = new ArrayList<>();
+        ids.add(1L);
+        ids.add(1382408225431552L);
+        ids.add(1382414513201152L);
+        List<OrdersPo> ordersPos = iOrdersPoService.listByIds(ids);
+        //OrdersPo ordersPo = iOrdersPoService.getById(orderId);
+        System.out.println(ordersPos);
+//        ordersPo.setOrderId(null);
+//        iOrdersPoService.save(ordersPo);
     }
 }

@@ -12,9 +12,7 @@ import cn.cnaworld.framework.infrastructure.component.repositorylazy.annotation.
 import cn.cnaworld.framework.infrastructure.exception.BusinessException;
 import cn.cnaworld.framework.infrastructure.utils.bean.CnaBeanCopierUtil;
 import cn.cnaworld.framework.infrastructure.utils.bean.CnaSpringBeanUtil;
-import jdk.nashorn.internal.objects.annotations.Property;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 订单聚合根

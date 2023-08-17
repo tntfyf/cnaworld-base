@@ -9,11 +9,28 @@
         <result column="order_buyer_phone" property="orderBuyerPhone" />
         <result column="buyer_name" property="buyerName" />
         <result column="sku_properties_name" property="skuPropertiesName" />
+        <result column="encrypt" property="encrypt" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        order_id, order_title, order_buyer_phone, buyer_name, sku_properties_name
+        order_id, order_title, order_buyer_phone, buyer_name, sku_properties_name, encrypt
     </sql>
+
+    <select id="selectOneById" resultType="cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo">
+        select * from orders where order_id = 1;
+    </select>
+    
+    <update id="updateOneById" parameterType="cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo">
+        UPDATE orders o, product p SET o.order_title=#{orderTitle}, p.product_title=#{orderTitle} WHERE o.order_id = 1
+    </update>
+
+    <update id="updateListById" parameterType="java.util.List">
+        UPDATE orders o, product p SET
+        <foreach collection="ordersPoList" item="ordersPo" >
+            o.order_title=#{ordersPo.orderTitle}, p.product_title=#{ordersPo.orderTitle}
+        </foreach>
+        WHERE o.order_id = 1
+    </update>
 
 </mapper>

@@ -1,23 +1,14 @@
-# Spring boot base 基础服务
-## 1.0.1.2 版本 ORM下沉
-
-作用：
-
-项目基于DDD领域模型进行的分层，api 接入层 、application  应用层、 domain 领域层 、 infrastructure 基础层。
-
-目录
-
 ```
 ├─cn.cnaworld.base
 │    │
 │    ├─api   API接口层
 │    │    ├─controller 控制器，对外提供（Restful）接口
-│    │    ├─model      视图模型,数据模型定义 vo/dto（大多数情況是一样的）
+│    │    └─model      视图模型,数据模型定义 vo/dto（大多数情況是一样的）
 │    │
 │    ├─application    应用层
 │    │    ├─service   应用服务，负责领域间服务编排，胶水层
 │    │    ├─assembler 装配器，实现模型转换DO到DTO、VO的转换
-│    │    ├─task      任务定义，协调领域模型
+│    │    └─task      任务定义，协调领域模型
 │    │
 │    ├─domain   领域层
 │    │    ├─order         订单领域
@@ -27,11 +18,8 @@
 │    │    │    ├─model    模型层
 │    │    │    │    ├─entity  实体
 │    │    │    │    ├─root    聚合根
-│    │    │    │    ├─vo      值对象
-│    │    │    ├─repository   仓储层
-│    │    │    │    ├─facade       仓储接口
-│    │    │    │    ├─persistence  仓储持久化实现
-│    │    │    ├─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
+│    │    │    │    └─vo      值对象
+│    │    │    └─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
 │    │    │
 │    │    ├─product  商品领域
 │    │    │    ├─event    领域事件
@@ -40,31 +28,31 @@
 │    │    │    ├─model    模型层
 │    │    │    │    ├─entity  实体
 │    │    │    │    ├─root    聚合根
-│    │    │    │    ├─vo      值对象
-│    │    │    ├─repository   仓储层
-│    │    │    │    ├─facade       仓储接口
-│    │    │    │    ├─persistence  仓储持久化实现
-│    │    │    ├─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
-│    │
+│    │    │    │    └─vo      值对象
+│    │    │    └─service  领域服务，聚合服务，不能归与上述模型，如分页条件查询等可写在此处
+│    │    │
 │    ├─infrastructure  基础设施层
 │    │    ├─component  框架组件
 │    │    │    ├─bus              领域消息总线
 │    │    │    └─baseclass        基础类
 │    │    │    └─exceptionhandler 统一异常处理 
+│    │    ├─repository   仓储
+│    │    │    ├─facade      仓储接口
+│    │    │    ├─persistence 仓储持久化实现
+│    │    │    └─orm         框架实现
 │    │    ├─config      配置类，统一配置管理
-│    │    ├─orm         orm框架实现
-│    │    ├─utils       工具类	
-│    │
+│    │    └─utils       工具类	
+│    │    
 │    └─resources
 │    │    ├─log4j2    日志配置
 │    │    ├─redisson  缓存配置
 │    │    ├─smart-doc 接口文档配置
 │    │    ├─static
-│    │    │    └─doc      生成的静态接口文档
+│    │    │    ├─doc      生成的静态接口文档
 │    │    │    └─template 静态页面模板
-│    │    └─application.yml  全局配置文件
-│    │    └─application-site.yml 本地环境配置文件
-│    │    └─application-dev.yml  测试环境配置文件
+│    │    ├─application.yml  全局配置文件
+│    │    ├─application-site.yml 本地环境配置文件
+│    │    ├─application-dev.yml  测试环境配置文件
 │    │    └─application-prod.yml 生产环境配置文件
 ```
 

@@ -75,6 +75,12 @@ public class ApplicationService {
         System.out.println(goodsExt);
     }
 
+    public void testAutoEncrypt(long orderId){
+        orderRepository.testAutoEncrypt(orderId);
+    }
+
+
+
 
 
 }

@@ -1,8 +1,8 @@
 package cn.cnaworld.base;
 
 import cn.cnaworld.base.infrastructure.component.baseclass.CnaWorldBaseEntity;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaWorldBaseMapper;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.CnaWorldBaseService;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaworldBaseMapper;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.CnaworldBaseService;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.impl.CnaWorldBaseServiceImpl;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
@@ -26,7 +26,7 @@ public class CnaworldBaseCodeGenerator {
 		GlobalConfig globalConfig = GeneratorBuilder.globalConfigBuilder()
 				.fileOverride()//是否覆盖已生成文件 默认值:false
 				.openDir(false)//是否打开生成目录 默认值:true 
-				.outputDir("D:\\Data\\CodeRepository\\github\\tntfyf\\cnaworld-base\\src\\main\\java\\")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
+				.outputDir("F:\\CodeRepository\\github\\tntfyf\\cnaworld-base\\src\\main\\java\\")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
 				.author("Lucifer")//作者名 默认值:无
 				//.enableKotlin()//是否生成kotlin 默认值:false
 				.enableSwagger()//是否生成swagger注解 默认值:false
@@ -52,7 +52,7 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("goods_ext")//增加表匹配(内存过滤)
+				.addInclude("orders")//增加表匹配(内存过滤)
 				//.addInclude("goods")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
@@ -88,7 +88,7 @@ public class CnaworldBaseCodeGenerator {
 					.enableRestStyle()//开启生成@RestController控制器
 				//service策略配置
 				.serviceBuilder()//service策略配置
-					.superServiceClass(CnaWorldBaseService.class)//设置service接口父类
+					.superServiceClass(CnaworldBaseService.class)//设置service接口父类
 					.superServiceImplClass(CnaWorldBaseServiceImpl.class)//设置service实现类父类
 					//.convertServiceFileName(null)//转换service接口文件名称
 					//.convertServiceImplFileName(null)//转换service实现类文件名称
@@ -96,7 +96,7 @@ public class CnaworldBaseCodeGenerator {
 					//.formatServiceImplFileName(null)//格式化service实现类文件名称	
 				//mapperBuilder
 				.mapperBuilder()//mapperBuilder
-					.superClass(CnaWorldBaseMapper.class)//设置父类
+					.superClass(CnaworldBaseMapper.class)//设置父类
 					//.cache(null)//设置缓存实现类
 					//.formatMapperFileName("")//格式化mapper文件名称
 					//.formatXmlFileName("")//格式化xml实现类文件名称

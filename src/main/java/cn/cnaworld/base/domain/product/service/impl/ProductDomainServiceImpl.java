@@ -1,7 +1,7 @@
 package cn.cnaworld.base.domain.product.service.impl;
 
-import cn.cnaworld.base.infrastructure.repository.order.facade.OrderRepository;
 import cn.cnaworld.base.domain.product.service.ProductrDomainService;
+import cn.cnaworld.base.infrastructure.repository.order.facade.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

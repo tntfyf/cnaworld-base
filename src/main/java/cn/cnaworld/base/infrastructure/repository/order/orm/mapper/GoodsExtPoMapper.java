@@ -1,7 +1,7 @@
 package cn.cnaworld.base.infrastructure.repository.order.orm.mapper;
 
 import cn.cnaworld.base.infrastructure.repository.order.orm.po.GoodsExtPo;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaWorldBaseMapper;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaworldBaseMapper;
 
 /**
  * <p>
@@ -11,6 +11,6 @@ import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapp
  * @author Lucifer
  * @since 2023-06-20
  */
-public interface GoodsExtPoMapper extends CnaWorldBaseMapper<GoodsExtPo> {
+public interface GoodsExtPoMapper extends CnaworldBaseMapper<GoodsExtPo> {
 
 }
