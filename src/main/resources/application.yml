@@ -53,11 +53,11 @@ cnaworld:
     enable: true
     agg-package: "cn/cnaworld/base/domain/*/model/*"
   mybatis-plus:
+    auto-field-encrypt: true #使用对象进行CRUD时，若字段上存在@CnaFieldEncrypt注解则会自动加密解密
     auto-insert-fill: true #数据初始化时默认填充，insert时，自动获取fill-strategy-field 中的属性进行填充。
     function-extension: true #扩展逻辑删除相关方法，提供逻辑恢复和直接删除扩展方法。默认true开启。
     snow-flake: true #提供16位雪花ID实现。默认true开启。
     optimistic-locker: true #提供乐观锁实现 OptimisticLockerInnerInterceptor。默认true开启。
-    update-optimistic-locker-field: true #数据更新时对乐观锁字段累增后填充。默认true开启。
     fill-strategy-field: #数据初始化时默认填充属性集合
       - field-name: "createTimeDb" #需填充的entity字段名称，需要注解 @TableField(value = "create_time_db",fill = FieldFill.INSERT) 中开启fill = FieldFill.INSERT
         field-class: java.time.LocalDateTime #默认填充字段类型，Date 、Timestamp 、 LocalDateTime 默认取当前时间，Long 、Integer 默认取0。
@@ -65,6 +65,5 @@ cnaworld:
         field-class: java.time.LocalDateTime #填充值处理器，实现FieldProcessor的getFieldValue方法，返回值作为属性填充值。
       - field-name: "deletedDb"
         field-value: false #填充值
-    field-encrypt:
-      key: Ssadasa123dsfsda21sdasd
-      algorithm: AES
+    field-encrypt: #使用对象进行CRUD时，若字段上存在@CnaFieldEncrypt注解则会自动加密解密
+      keys: Ssadasa123dsfsda21sdasd #加密密钥

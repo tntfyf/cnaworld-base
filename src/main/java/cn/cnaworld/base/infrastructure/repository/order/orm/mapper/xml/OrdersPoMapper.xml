@@ -21,7 +21,16 @@
         select * from orders where order_id = 1;
     </select>
     
-    <update id="updateOneById" parameterType="java.lang.String">
-        UPDATE orders SET order_title=#{orderTitle}, buyer_name=#{buyerName} WHERE order_id = 1
+    <update id="updateOneById" parameterType="cn.cnaworld.base.infrastructure.repository.order.orm.po.OrdersPo">
+        UPDATE orders o, product p SET o.order_title=#{orderTitle}, p.product_title=#{orderTitle} WHERE o.order_id = 1
     </update>
+
+    <update id="updateListById" parameterType="java.util.List">
+        UPDATE orders o, product p SET
+        <foreach collection="ordersPoList" item="ordersPo" >
+            o.order_title=#{ordersPo.orderTitle}, p.product_title=#{ordersPo.orderTitle}
+        </foreach>
+        WHERE o.order_id = 1
+    </update>
+
 </mapper>
