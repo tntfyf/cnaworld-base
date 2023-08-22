@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 /**
  * @author Administrator
  * @date 2023/5/28
- * @since
+ * @since 1.1.0
  */
 @Component
 public class ProductListener implements ApplicationListener<DomainEvent> {
 
     /**
-     * @param event
+     * @param event 事件实体
      */
     @Override
     public void onApplicationEvent(@NotNull DomainEvent event) {

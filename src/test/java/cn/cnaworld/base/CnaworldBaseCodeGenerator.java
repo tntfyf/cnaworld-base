@@ -1,6 +1,6 @@
 package cn.cnaworld.base;
 
-import cn.cnaworld.base.infrastructure.component.baseclass.CnaWorldBaseEntity;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.entity.CnaworldBaseEntity;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.mapper.CnaworldBaseMapper;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.CnaworldBaseService;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.service.impl.CnaWorldBaseServiceImpl;
@@ -26,7 +26,7 @@ public class CnaworldBaseCodeGenerator {
 		GlobalConfig globalConfig = GeneratorBuilder.globalConfigBuilder()
 				.fileOverride()//是否覆盖已生成文件 默认值:false
 				.openDir(false)//是否打开生成目录 默认值:true 
-				.outputDir("F:\\CodeRepository\\github\\tntfyf\\cnaworld-base\\src\\main\\java\\")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
+				.outputDir("./src/main/java/")//指定输出目录 默认值: windows:D:// linux or mac : /tmp
 				.author("Lucifer")//作者名 默认值:无
 				//.enableKotlin()//是否生成kotlin 默认值:false
 				.enableSwagger()//是否生成swagger注解 默认值:false
@@ -34,7 +34,7 @@ public class CnaworldBaseCodeGenerator {
 				.commentDate("yyyy-MM-dd")//注释日期 默认值: yyyy-MM-dd
 				.build();
 		PackageConfig packageConfig = new PackageConfig.Builder()
-				.parent("cn.cnaworld.base.infrastructure.repository.order") //父包名 默认值:com.baomidou
+				.parent("cn.cnaworld.base.infrastructure.repository.book") //父包名 默认值:com.baomidou
 				.moduleName("orm") //父包模块名 默认值:无
 				.entity("po") //Entity包名 默认值:entity
 				.service("service") //Service包名 默认值:service
@@ -43,7 +43,7 @@ public class CnaworldBaseCodeGenerator {
 				.xml("mapper.xml") //Mapper XML包名 默认值:mapper.xml
 				//.controller("controller") //Controller包名 默认值:controller
 				.build();
-		TemplateConfig templateConfig = new TemplateConfig.Builder().controller("").build(); // 激活所有默认模板
+		TemplateConfig templateConfig = new TemplateConfig.Builder().build(); // 激活所有默认模板
 		//LikeTable likeTable=new LikeTable("operate_log");
 		StrategyConfig strategyConfig = new StrategyConfig.Builder()
 				.enableCapitalMode()//开启大写命名
@@ -52,14 +52,14 @@ public class CnaworldBaseCodeGenerator {
 				//.likeTable(likeTable)//模糊表匹配(sql过滤)
 				//.notLikeTable(null)//模糊表匹配(sql过滤)
 				//.addFieldPrefix("")//增加表字段前缀
-				.addInclude("orders")//增加表匹配(内存过滤)
+				.addInclude("book")//增加表匹配(内存过滤)
 				//.addInclude("goods")//增加表匹配(内存过滤)
 				//.addInclude("email_account_manage")//增加表匹配(内存过滤)
 				//.addExclude("")//增加表排除匹配(内存过滤)
 				//.addTablePrefix("")//增加表前缀
 				//实体策略配置
 				.entityBuilder()//实体策略配置
-					.superClass(CnaWorldBaseEntity.class)//父类W
+					.superClass(CnaworldBaseEntity.class)//父类W
 					//.enableColumnConstant()//开启生成字段常量W
 					//.enableChainModel()//开启链式模型
 					//.addSuperEntityColumns("")//添加父类公共字段

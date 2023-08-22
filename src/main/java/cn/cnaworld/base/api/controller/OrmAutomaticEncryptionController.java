@@ -10,9 +10,8 @@ import cn.cnaworld.framework.infrastructure.annotation.CnaAopLog;
 import cn.cnaworld.framework.infrastructure.utils.bean.CnaBeanCopierUtil;
 import cn.cnaworld.framework.infrastructure.utils.http.ResponseResult;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +21,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 /**
  * 接入层
@@ -32,7 +30,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/autoEncrypt/v1")
-@Api(tags = "自动加密解密")
+@Tag(name = "自动加密解密")
 public class OrmAutomaticEncryptionController {
     //接入层负责处理用户请求，解析参数，转换数据格式等
     @Autowired
@@ -55,7 +53,7 @@ public class OrmAutomaticEncryptionController {
      */
     @GetMapping("/test/{orderId}")
     @CnaAopLog
-    @ApiOperation("测试orm自动加密")
+    @Operation(summary ="测试orm自动加密")
     public ResponseResult<OrderAndProductInfoDto> getOrderInfo(@PathVariable String orderId){
         long orderIdLong=Long.parseLong(orderId);
         //应用层服务响应接入层的请求，开始进行领域服务编排
@@ -72,7 +70,7 @@ public class OrmAutomaticEncryptionController {
      * @return ResponseResult<StudentAndTeacherDto>
      */
     @GetMapping("/objInsert")
-    @ApiOperation("自动加密objInsert")
+    @Operation(summary ="自动加密objInsert")
     public ResponseResult<OrdersPo> objInsert(){
         byte a = -123;
         short b = -1234;
@@ -95,7 +93,7 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/listInsert")
-    @ApiOperation("自动加密listInsert")
+    @Operation(summary ="自动加密listInsert")
     public ResponseResult<List<OrdersPo>> listInsert(){
         byte a = -123;
         short b = -1234;
@@ -124,7 +122,7 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/objSelect")
-    @ApiOperation("objSelect")
+    @Operation(summary ="objSelect")
     @CnaAopLog
     public ResponseResult<OrdersPo> objSelect(Long id){
         OrdersPo ordersPo = iOrdersPoService.getById(id);
@@ -132,14 +130,14 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/listSelect")
-    @ApiOperation("listSelect")
+    @Operation(summary ="listSelect")
     public ResponseResult<List<OrdersPo>> listSelect(@RequestParam List<Long> ids){
         List<OrdersPo> ordersPo = iOrdersPoService.listByIds(ids);
         return ResponseResult.success(ordersPo);
     }
 
     @GetMapping("/objUpdate")
-    @ApiOperation("自动加密objUpdate")
+    @Operation(summary ="自动加密objUpdate")
     public ResponseResult<OrdersPo> objUpdate(){
         byte a = -21;
         short b = -4321;
@@ -161,7 +159,7 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/listUpdate")
-    @ApiOperation("自动加密listUpdate")
+    @Operation(summary ="自动加密listUpdate")
     public ResponseResult<List<OrdersPo>> listUpdate(@RequestParam List<Long> ids){
         byte a = -21;
         short b = -4321;
@@ -185,7 +183,7 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/listSelectByQw")
-    @ApiOperation("listSelectByQw")
+    @Operation(summary ="listSelectByQw")
     public ResponseResult<List<OrdersPo>> listSelectByQw(){
         QueryWrapper<OrdersPo> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("order_id","1385858927984640");
@@ -195,7 +193,7 @@ public class OrmAutomaticEncryptionController {
     }
 
     @GetMapping("/selectVO2")
-    @ApiOperation("selectVO2")
+    @Operation(summary ="selectVO2")
     public ResponseResult<List<OrdersPo>> selectVO2(){
         List<OrdersPo> ordersPos = ordersPoMapper.selectVO2();
         return ResponseResult.success(ordersPos);
