@@ -15,25 +15,6 @@ spring:
 logging:
   config: classpath:log4j2/log4j2-spring.xml
 
-knife4j:
-  enable: true
-  openapi:
-    title: "cnaworld-base 接口文档"
-    description: "cnaworld-base 接口文档"
-    email: tntfyf@yeah.net
-    concat: tntfyf
-    url: https://github.com/tntfyf/cnaworld-base
-    version: v1.0.0
-    license: Apache 2.0
-    license-url: https://stackoverflow.com/
-    terms-of-service-url: https://stackoverflow.com/
-    group:
-      default:
-        group-name: cnaworld
-        api-rule: package
-        api-rule-resources:
-          - cn.cnaworld.base
-
 mybatis-plus:
   global-config:
    db-config:
@@ -67,3 +48,39 @@ cnaworld:
         field-value: false #填充值
     field-encrypt: #使用对象进行CRUD时，若字段上存在@CnaFieldEncrypt注解则会自动加密解密
       keys: Ssadasa123dsfsda21sdasd #加密密钥
+
+# springdoc-openapi项目配置
+springdoc:
+  swagger-ui:
+    # 原生页面路径
+    path: /swagger-ui.html
+    # 接口组排序规则
+    tags-sorter: alpha
+    # 接口排序规则
+    operations-sorter: alpha
+  api-docs:
+    # 配置文件路径
+    path: /v3/api-docs
+  # 分组扫描配置
+  group-configs:
+    # 分组名称
+    - group: 'cnaworld'
+      #扫描规则
+      paths-to-match: '/**'
+      #扫描包
+      packages-to-scan: cn.cnaworld.base
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  #开启增强
+  enable: true
+  setting:
+    #中文模式
+    language: zh_cn
+    #是否开启自定义Footer
+    enable-footer-custom: true
+    #自定义Footer内容
+    footer-custom-content: cnaworld
+    #是否开启动态参数调试功能
+    enable-dynamic-parameter: true
+    #是否开启界面中对某接口的版本控制,如果开启，后端变化后Ui界面会存在小蓝点
+    enable-version: true

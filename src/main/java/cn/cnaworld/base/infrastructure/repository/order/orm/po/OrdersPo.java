@@ -1,16 +1,12 @@
 package cn.cnaworld.base.infrastructure.repository.order.orm.po;
 
-import cn.cnaworld.base.infrastructure.component.baseclass.CnaWorldBaseEntity;
 import cn.cnaworld.framework.infrastructure.component.mybatisplus.annotation.CnaFieldEncrypt;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.processor.localdateprocessor.impl.LocalDateEncryptProcessor;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.processor.stringprocessor.impl.AESEncryptProcessor;
-import cn.cnaworld.framework.infrastructure.component.mybatisplus.statics.enums.EncryptAlgorithm;
+import cn.cnaworld.framework.infrastructure.component.mybatisplus.baseclass.entity.CnaworldBaseEntity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -34,26 +30,26 @@ import java.util.Date;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("orders")
-@ApiModel(value = "OrdersPo对象", description = "")
-public class OrdersPo extends CnaWorldBaseEntity {
+@Schema(name = "OrdersPo对象",description = "OrdersPo对象 OrdersPo对象")
+public class OrdersPo extends CnaworldBaseEntity {
 
-    @ApiModelProperty(value = "订单ID")
+    @Schema(description = "订单ID")
     @TableId(value = "order_id", type = IdType.ASSIGN_ID)
     private Long orderId;
 
-    @ApiModelProperty(value = "订单标题")
+    @Schema(description = "订单标题")
     @TableField("order_title")
     private String orderTitle;
 
-    @ApiModelProperty(value = "订单购买电话")
+    @Schema(description = "订单购买电话")
     @TableField("order_buyer_phone")
     private String orderBuyerPhone;
 
-    @ApiModelProperty(value = "订单购买人名称")
+    @Schema(description = "订单购买人名称")
     @TableField("buyer_name")
     private String buyerName;
 
-    @ApiModelProperty(value = "订单规格")
+    @Schema(description = "订单规格")
     @TableField("sku_properties_name")
     private String skuPropertiesName;
 

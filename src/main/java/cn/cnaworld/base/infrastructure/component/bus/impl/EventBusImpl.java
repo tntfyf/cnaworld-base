@@ -38,6 +38,7 @@ public class EventBusImpl implements ApplicationContextAware, DomainEventBus {
         applicationContext.publishEvent(event);
         try {
             String message = objectMapper.writeValueAsString(event);
+            System.out.println(message);
         } catch (Exception e) {
             CnaLogUtil.error(log,"error when store event", e);
         }
