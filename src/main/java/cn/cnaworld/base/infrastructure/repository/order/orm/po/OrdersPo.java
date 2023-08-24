@@ -96,6 +96,7 @@ public class OrdersPo extends CnaworldBaseEntity {
     @TableField("encrypt_local_time")
     private LocalDateTime encryptLocalTime;
 
+    @CnaFieldEncrypt
     @TableField("encrypt_local_date")
     private LocalDate encryptLocalDate;
 

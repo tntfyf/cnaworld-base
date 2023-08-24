@@ -25,7 +25,7 @@ import lombok.ToString;
 @ToString(callSuper=true)
 @EqualsAndHashCode(callSuper = true)
 @TableName("goods")
-@Schema(name = "GoodsPo对象", description = "")
+@Schema(name = "GoodsPo对象", description = "GoodsPo对象")
 public class GoodsPo extends CnaworldBaseEntity {
 
     @Schema(description = "商品ID")
